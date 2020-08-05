@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="lib (2)">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/lib/jython2.7.2/Doc/javadoc" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib/jython2.7.2/Demo/embed" />
+      <root url="file://$PROJECT_DIR$/lib/jython2.7.2/Demo/jreload/src" />
+      <root url="file://$PROJECT_DIR$/lib/jython2.7.2/tests/java" />
+      <root url="file://$PROJECT_DIR$/lib" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>
