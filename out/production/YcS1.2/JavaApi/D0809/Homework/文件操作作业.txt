@@ -1,0 +1,27 @@
+请根据要求完成如下操作：
+	1、在控制台输出 D:\ 目录下所有文件和目录
+	
+	2、创建文件夹 myfiles
+	
+	3、在 myfiles 文件夹中创建以下文件。注意，如果文件已经存在，需要提示用户该文件已经存在：
+		readme.txt
+		info.txt
+		test.ini
+		tools.txt
+		students.ini
+		baidu.inf
+		taobao.inf
+		helloworld.java
+		head.jpg
+		red.gif
+		green.bmp
+		
+	5、过滤查询所有的 txt 文件 ( 参考 listFiles(FileFilter filter) 方法 )
+	
+	6、修改所有的图片文件，将文件名前面加入“图片_”
+	
+	7、删除所有以字母 t 开头文件
+	
+	8、在 readme.txt 文件中，使用流写入一首唐诗
+	
+	9、使用流将 readme.txt 的内容读取出来, 并输出到控制台上

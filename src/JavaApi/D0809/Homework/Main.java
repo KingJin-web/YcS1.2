@@ -1,4 +1,4 @@
-package JavaApi.D0809;
+package JavaApi.D0809.Homework;
 
 import java.io.*;
 import java.util.Scanner;
@@ -48,12 +48,13 @@ public class Main {
                     fileD();
                     break;
                 case 2:
-                    if (!dir.exists()) {//如果文件夹不存在
-                        dir.mkdir();//创建文件夹
+                    if (!dir.exists()) {
+                        //如果文件夹不存在
+                        dir.mkdir();
+                        //创建文件夹
                     } else {
                         System.out.println(dir.getName() + " 该文件已经存在");
                     }
-
                     break;
                 case 3:
                     for (int i = 0; i < str.length; i++) {
@@ -61,7 +62,8 @@ public class Main {
                     }
                     break;
                 case 4:
-                    FilenameFilter filter = new TxtFilenameFilter();//使用内部类来实现接口
+                    FilenameFilter filter = new TxtFilenameFilter();
+                    //使用内部类来实现接口
                     String[] filess = dir.list(filter);
                     for (String filename : filess) {
                         System.out.println(filename);
@@ -83,6 +85,7 @@ public class Main {
                     break;
                 case 8:
                     read();
+                    break;
                 default:
                     System.out.println("输入错误");
                     JP();
@@ -92,7 +95,7 @@ public class Main {
     }
 
     public static void fileD() {
-        File f = new File("d:\\");
+        File f = new File("D:\\");
         boolean b = false;
         try {
             TestFile.fileList(f);
@@ -187,7 +190,7 @@ public class Main {
      * @param poetry   唐诗
      */
     public static void writer(String filename, String poetry) {
-        //File dir=new File("G:\\jetbrains\\java\\Review\\src\\D0303\\myfiles");
+
         File file = new File(dir, filename);
         FileWriter fw = null;
 
