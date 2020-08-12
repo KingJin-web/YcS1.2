@@ -1,5 +1,7 @@
 package JavaApi.D0809.Homework;
 
+import Util.io.IOHelper;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -161,7 +163,7 @@ public class Main {
     public static void delFolder(String name) {
         try {
 
-            // File dir=new File("G:\\jetbrains\\java\\Review\\src\\D0303\\myfiles");
+
             File file = new File(dir, name);
             file.delete();
             //删除文件
@@ -171,14 +173,14 @@ public class Main {
     }
 
     public static void read() throws IOException {
-        File file = new File("G:\\jetbrains\\java\\Review\\src\\D0303\\myfiles\\readme.txt");
+        File file = new File(dir, "readme.txt");
 
         StringBuilder sb = new StringBuilder();
         String s = "";
         BufferedReader br = new BufferedReader(new FileReader(file));
 
         while ((s = br.readLine()) != null) {
-            sb.append(s + "\n");
+            sb.append(s).append("\n");
         }
         br.close();
         String str = sb.toString();
@@ -200,13 +202,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (fw != null) {
-                try {
-                    fw.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            IOHelper.close(fw);
         }
     }
 
@@ -235,12 +231,10 @@ public class Main {
         public boolean accept(File dir, String name) {
             return name.endsWith("jpg") || name.endsWith("gif") || name.endsWith("bmp");
         }
-
     }
 
     /**
      * 重命名一个文件：将原来的文件直接修改
-     *
      * @param filePath 文件路径
      * @param name     要加文件名
      */
@@ -264,6 +258,8 @@ public class Main {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            IOHelper.close();
         }
     }
 
