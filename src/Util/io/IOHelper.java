@@ -37,4 +37,14 @@ public class IOHelper {
 			}
 		}
 	}
+
+	public static void close(AutoCloseable ...c) {
+		for (AutoCloseable autoCloseable : c) {
+			try {
+				autoCloseable.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

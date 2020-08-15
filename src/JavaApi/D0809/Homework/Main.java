@@ -139,7 +139,7 @@ public class Main {
      * 过滤查询所有的 txt 文件
      */
     public static void chTxt() {
-        File file = new File("G:\\jetbrains\\java\\Review\\src\\D0303\\myfiles");
+        File file = new File(String.valueOf(dir));
         FilenameFilter filter = new TxtFilenameFilter();//使用内部类来实现接口
         String[] filess = file.list(filter);
         for (String filename : filess) {
