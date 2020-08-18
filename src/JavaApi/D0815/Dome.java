@@ -25,4 +25,12 @@ public class Dome {
         Assert.assertEquals(5,page.size());
         Assert.assertEquals("蔡徐坤",page.get(0).get("ENAME"));
     }
+
+    @Test
+    public void testTransactional(){
+        String sq11 = "update bank_account set balance = balance + ? where id = ?";
+        String sq12 = " insert into bank_oprecord values ( bank_ seq. nextva1, ?，?，sysdate)";
+    }
 }
+
+

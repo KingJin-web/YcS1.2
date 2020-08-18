@@ -407,7 +407,7 @@ public class DBHelper {
         } catch (SQLException e) {
             throw new RuntimeException("执行SQL语句失败!", e);
         } finally {
-            if (isAutoCommit == true) {
+            if (isAutoCommit) {
                 IOHelper.close(conn);
             }
         }

@@ -18,9 +18,12 @@ public class EmpDao {
         }
     }
 
-    public void closeConnection() {
-        IOHelper.close(conn);
+    public EmpDao() {
+
     }
+
+
+
 
     // 返回连接对象
     public Connection getConn() {
@@ -71,9 +74,57 @@ public class EmpDao {
         }
     }
 
-    public List<Map<String, Object>> inquiry(String sql, Object... params) throws SQLException {
-        List<Map<String, Object>> ret = new ArrayList<>();
+    public ArrayList<Emp> inquiry(String sql, Object... params) throws SQLException {
+        ArrayList<Emp> ret = new ArrayList<>();
         try {
+            conn = openConnection();
+            System.out.println("SQL: " + sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            System.out.println("参数: " + Arrays.toString(params));
+            for (int i = 0; i < params.length; i++) {
+                ps.setObject(i + 1, params[i]);
+            }
+            ResultSet rs = ps.executeQuery();
+
+
+
+
+
+            while (rs.next()) {
+                Emp emp = new Emp();
+                emp.setEmpno(rs.getInt("Empno"));
+                emp.setEname(rs.getString("Ename"));
+                emp.setJob(rs.getString("Job"));
+                emp.setMgr(rs.getInt("Mgr"));
+                emp.setHiredate(rs.getDate("Hiredate"));
+                emp.setSal(rs.getInt("Sal"));
+                emp.setComm(rs.getInt("Comm"));
+                ret.add(emp);
+            }
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+            IOHelper.close(conn);
+
+        }
+        return ret;
+    }
+
+    /**
+     * 执行修改数据库的语句
+     * sql = "update emp set ename = ? where empno=?"
+     * update(sql,2,3,)
+     *
+     * @param sql    执行的sql语句
+     * @param params 可变参数数组
+     * @return
+     */
+    public int update(String sql, Object... params) {
+        try {
+            // 每次都会通过open方法获取连接
             conn = openConnection();
             System.out.println("SQL: " + sql);
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -82,31 +133,15 @@ public class EmpDao {
             for (int i = 0; i < params.length; i++) {
                 ps.setObject(i + 1, params[i]);
             }
-            ResultSet rs = ps.executeQuery();
-
-            // 获取结果集元数据对象, 元(Meta)数据(data): 描述数据的数据
-            ResultSetMetaData rsmd = rs.getMetaData();
-            // 创建返回结果对象
-            Map<String, Object> row = new LinkedHashMap<>();
-            Emp emp = new Emp();
-
-            while (rs.next()) {
-                emp.setEmpno(rs.getInt(1));
-                emp.setEname(rs.getString(2));
-                emp.setJob(rs.getString(3));
-                emp.setMgr(rs.getInt(4));
-                emp.setHiredate(rs.getDate(5));
-                emp.setSal(rs.getInt(6));
-                emp.setComm(rs.getInt(7));
-
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("执行SQL语句失败!", e);
+        } finally {
+            if (isAutoCommit) {
+                IOHelper.close(conn);
             }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }finally {
-            IOHelper.close(conn);
         }
-        return ret;
     }
+
 
 }

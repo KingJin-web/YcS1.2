@@ -47,5 +47,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="swt" level="project" />
   </component>
 </module>
