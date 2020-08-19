@@ -1,19 +1,11 @@
-package Homework.tow;
+package swt.D0818.Homework;
 
 import org.eclipse.swt.widgets.Display;
-
-
 import org.eclipse.swt.widgets.Shell;
-
 import org.eclipse.swt.widgets.Label;
-
-
 import org.eclipse.swt.SWT;
-import org.eclipse.wb.SWTResourceManager;
-//import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.widgets.Text;
-
-
 import org.eclipse.swt.events.SelectionAdapter;
 
 import org.eclipse.swt.widgets.Button;
