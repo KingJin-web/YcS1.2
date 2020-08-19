@@ -19,7 +19,7 @@ if mswindows:
                                                 'os.O_BINARY);')
 elif jython:
     SETBINARY = ('import os,sys;'
-                 'sys.stdout = os.fdopen(sys.stdout.fileno(), "wb");')
+                 'sys.stdout = os.fdopen(sys.stdout.fileno(), "org.eclipse.wb");')
 else:
     SETBINARY = ''
 

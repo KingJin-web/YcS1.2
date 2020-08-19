@@ -300,7 +300,7 @@ class TestJointOps(unittest.TestCase):
         w = ReprWrapper()
         s = self.thetype([w])
         w.value = s
-        fo = open(test_support.TESTFN, "wb")
+        fo = open(test_support.TESTFN, "org.eclipse.wb")
         try:
             print >> fo, s,
             fo.close()
@@ -703,7 +703,7 @@ class TestBasicOps(unittest.TestCase):
         self.assertEqual(result, sorted_repr_values)
 
     def test_print(self):
-        fo = open(test_support.TESTFN, "wb")
+        fo = open(test_support.TESTFN, "org.eclipse.wb")
         try:
             print >> fo, self.set,
             fo.close()

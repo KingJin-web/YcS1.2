@@ -8,11 +8,11 @@ import unittest
 import os
 
 # the original had incorrect semantics for non-refcounting GCs:
-#                marshal.dump(expected, file(test_support.TESTFN, "wb"))
+#                marshal.dump(expected, file(test_support.TESTFN, "org.eclipse.wb"))
 #                got = marshal.load(file(test_support.TESTFN, "rb"))
 
 def roundtrip(item):
-    with open(test_support.TESTFN, "wb") as test_file:
+    with open(test_support.TESTFN, "org.eclipse.wb") as test_file:
         marshal.dump(item, test_file)
     with open(test_support.TESTFN, "rb") as test_file:
         got = marshal.load(test_file)
@@ -109,7 +109,7 @@ class FloatTestCase(unittest.TestCase):
                 self.assertEqual(f, got)
 
                 # XXX - not certain what this extra arg to dump is!
-                #marshal.dump(f, file(test_support.TESTFN, "wb"), 1)
+                #marshal.dump(f, file(test_support.TESTFN, "org.eclipse.wb"), 1)
                 #got = marshal.load(file(test_support.TESTFN, "rb"))
                 #self.assertEqual(f, got)
             n *= 123.4567
@@ -281,7 +281,7 @@ pointer_size = 8 if sys.maxsize > 0xFFFFFFFF else 4
 @unittest.skipIf(LARGE_SIZE > sys.maxsize, "requires larger sys.maxsize")
 class LargeValuesTestCase(unittest.TestCase):
     def check_unmarshallable(self, data):
-        f = open(test_support.TESTFN, 'wb')
+        f = open(test_support.TESTFN, 'org.eclipse.wb')
         self.addCleanup(test_support.unlink, test_support.TESTFN)
         with f:
             self.assertRaises(ValueError, marshal.dump, data, f)

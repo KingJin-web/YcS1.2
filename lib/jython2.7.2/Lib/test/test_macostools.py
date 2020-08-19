@@ -18,7 +18,7 @@ class TestMacostools(unittest.TestCase):
         fp = open(test_support.TESTFN, 'w')
         fp.write('hello world\n')
         fp.close()
-        rfp = MacOS.openrf(test_support.TESTFN, '*wb')
+        rfp = MacOS.openrf(test_support.TESTFN, '*org.eclipse.wb')
         rfp.write('goodbye world\n')
         rfp.close()
 

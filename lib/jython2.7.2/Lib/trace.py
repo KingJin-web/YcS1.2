@@ -350,7 +350,7 @@ class CoverageResults:
             # try and store counts and module info into self.outfile
             try:
                 pickle.dump((self.counts, self.calledfuncs, self.callers),
-                            open(self.outfile, 'wb'), 1)
+                            open(self.outfile, 'org.eclipse.wb'), 1)
             except IOError, err:
                 print >> sys.stderr, "Can't save counts files because %s" % err
 

@@ -46,7 +46,7 @@ class TestGzip(unittest.TestCase):
         except (UnicodeError, TypeError):
             self.skipTest("Requires unicode filenames support")
         self.filename = unicode_filename
-        with gzip.GzipFile(unicode_filename, "wb") as f:
+        with gzip.GzipFile(unicode_filename, "org.eclipse.wb") as f:
             f.write(data1 * 50)
         with gzip.GzipFile(unicode_filename, "rb") as f:
             self.assertEqual(f.read(), data1 * 50)
@@ -56,7 +56,7 @@ class TestGzip(unittest.TestCase):
             self.assertEqual(f.read(), data1 * 50)
 
     def test_write(self):
-        with gzip.GzipFile(self.filename, 'wb') as f:
+        with gzip.GzipFile(self.filename, 'org.eclipse.wb') as f:
             f.write(data1 * 50)
 
             # Try flush and fileno.
@@ -79,7 +79,7 @@ class TestGzip(unittest.TestCase):
         # Test that non-bytes-like types raise TypeError.
         # Issue #21560: attempts to write incompatible types
         # should not affect the state of the fileobject
-        with gzip.GzipFile(self.filename, 'wb') as f:
+        with gzip.GzipFile(self.filename, 'org.eclipse.wb') as f:
             with self.assertRaises(UnicodeEncodeError):
                 f.write(u'\xff')
             with self.assertRaises(TypeError):
@@ -138,7 +138,7 @@ class TestGzip(unittest.TestCase):
         # Bug #1074261 was triggered when reading a file that contained
         # many, many members.  Create such a file and verify that reading it
         # works.
-        with gzip.open(self.filename, 'wb', 9) as f:
+        with gzip.open(self.filename, 'org.eclipse.wb', 9) as f:
             f.write('a')
         for i in range(0, 200):
             with gzip.open(self.filename, "ab", 9) as f: # append
@@ -230,7 +230,7 @@ class TestGzip(unittest.TestCase):
             self.assertEqual(f.myfileobj.mode, 'rb')
 
     def test_1647484(self):
-        for mode in ('wb', 'rb'):
+        for mode in ('org.eclipse.wb', 'rb'):
             with gzip.GzipFile(self.filename, mode) as f:
                 self.assertTrue(hasattr(f, "name"))
                 self.assertEqual(f.name, self.filename)
@@ -292,7 +292,7 @@ class TestGzip(unittest.TestCase):
 
     def test_with_open(self):
         # GzipFile supports the context management protocol
-        with gzip.GzipFile(self.filename, "wb") as f:
+        with gzip.GzipFile(self.filename, "org.eclipse.wb") as f:
             f.write(b"xxx")
         f = gzip.GzipFile(self.filename, "rb")
         f.close()
@@ -304,7 +304,7 @@ class TestGzip(unittest.TestCase):
         else:
             self.fail("__enter__ on a closed file didn't raise an exception")
         try:
-            with gzip.GzipFile(self.filename, "wb") as f:
+            with gzip.GzipFile(self.filename, "org.eclipse.wb") as f:
                 1 // 0
         except ZeroDivisionError:
             pass
@@ -312,7 +312,7 @@ class TestGzip(unittest.TestCase):
             self.fail("1 // 0 didn't raise an exception")
 
     def test_zero_padded_file(self):
-        with gzip.GzipFile(self.filename, "wb") as f:
+        with gzip.GzipFile(self.filename, "org.eclipse.wb") as f:
             f.write(data1 * 50)
 
         # Pad the file with zeroes
@@ -327,7 +327,7 @@ class TestGzip(unittest.TestCase):
         # Issue #13781: Creating a GzipFile using a fileobj from os.fdopen()
         # should not embed the fake filename "<fdopen>" in the output file.
         fd = os.open(self.filename, os.O_WRONLY | os.O_CREAT)
-        with os.fdopen(fd, "wb") as f:
+        with os.fdopen(fd, "org.eclipse.wb") as f:
             with gzip.GzipFile(fileobj=f, mode="w") as g:
                 self.assertEqual(g.name, "")
 

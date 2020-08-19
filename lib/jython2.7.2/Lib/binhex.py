@@ -476,7 +476,7 @@ def hexbin(inp, out):
     if not out:
         out = ifp.FName
 
-    ofp = open(out, 'wb')
+    ofp = open(out, 'org.eclipse.wb')
     # XXXX Do translation on non-mac systems
     while 1:
         d = ifp.read(128000)
@@ -487,7 +487,7 @@ def hexbin(inp, out):
 
     d = ifp.read_rsrc(128000)
     if d:
-        ofp = openrsrc(out, 'wb')
+        ofp = openrsrc(out, 'org.eclipse.wb')
         ofp.write(d)
         while 1:
             d = ifp.read_rsrc(128000)

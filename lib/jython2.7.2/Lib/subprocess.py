@@ -961,7 +961,7 @@ class Popen(object):
                 self._stderr_thread.start()
 
         if p2cwrite is not None:
-            self.stdin = os.fdopen(p2cwrite, 'wb', bufsize)
+            self.stdin = os.fdopen(p2cwrite, 'org.eclipse.wb', bufsize)
         if c2pread is not None:
             if universal_newlines:
                 self.stdout = os.fdopen(c2pread, 'rU', bufsize)

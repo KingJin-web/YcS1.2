@@ -25,7 +25,7 @@ else:
 class BaseTestCase(unittest.TestCase):
 
     data = CRLF_TEST
-    write_mode = 'wb'
+    write_mode = 'org.eclipse.wb'
     mode = 'r'
     bufsize = -1
 

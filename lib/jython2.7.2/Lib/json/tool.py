@@ -22,7 +22,7 @@ def main():
         outfile = sys.stdout
     elif len(sys.argv) == 3:
         infile = open(sys.argv[1], 'rb')
-        outfile = open(sys.argv[2], 'wb')
+        outfile = open(sys.argv[2], 'org.eclipse.wb')
     else:
         raise SystemExit(sys.argv[0] + " [infile [outfile]]")
     with infile:

@@ -279,7 +279,7 @@ class SizeofTest(unittest.TestCase):
     def setUp(self):
         self.P = struct.calcsize('P')
         self.longdigit = sys.long_info.sizeof_digit
-        self.file = open(test.test_support.TESTFN, 'wb')
+        self.file = open(test.test_support.TESTFN, 'org.eclipse.wb')
 
     def tearDown(self):
         self.file.close()

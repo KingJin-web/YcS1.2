@@ -47,7 +47,7 @@ class ResourceTest(unittest.TestCase):
                     limit_set = True
                 except ValueError:
                     limit_set = False
-                f = open(test_support.TESTFN, "wb")
+                f = open(test_support.TESTFN, "org.eclipse.wb")
                 try:
                     f.write("X" * 1024)
                     try:

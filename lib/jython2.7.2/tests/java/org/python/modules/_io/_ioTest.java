@@ -105,7 +105,7 @@ public class _ioTest {
     public void openPyFileByFileno() throws IOException {
         PySystemState sys = Py.getSystemState();
         PyFile file = new PyFile(FILE1, "w", 1);
-        openByFilenoTest(file, "wb");
+        openByFilenoTest(file, "org/eclipse/wb");
     }
 
     /** Check <code>PyFile(OutputStream).fileno()</code> is acceptable to <code>_io.open()</code> */
@@ -114,7 +114,7 @@ public class _ioTest {
         PySystemState sys = Py.getSystemState();
         OutputStream ostream = new FileOutputStream(FILE1);
         PyFile file = new PyFile(ostream);
-        openByFilenoTest(file, "wb");
+        openByFilenoTest(file, "org/eclipse/wb");
     }
 
     /** Check <code>sys.stdin.fileno()</code> is acceptable to <code>_io.open()</code> */
@@ -128,14 +128,14 @@ public class _ioTest {
     @Test
     public void openStdoutByFileno() throws IOException {
         PySystemState sys = Py.getSystemState();
-        openByFilenoTest(sys.stdout, "wb");
+        openByFilenoTest(sys.stdout, "org/eclipse/wb");
     }
 
     /** Check <code>sys.stderr.fileno()</code> is acceptable to <code>_io.open()</code> */
     @Test
     public void openStderrByFileno() throws IOException {
         PySystemState sys = Py.getSystemState();
-        openByFilenoTest(sys.stderr, "wb");
+        openByFilenoTest(sys.stderr, "org/eclipse/wb");
     }
 
     /**
@@ -182,12 +182,12 @@ public class _ioTest {
         );
 
         // This should get us an io.FileIO (unbuffered binary file) called f
-        interp.exec("f = io.open('" + F + "', 'wb', 0)");
+        interp.exec("f = io.open('" + F + "', 'org.eclipse.wb', 0)");
         PyIOBase pyf = (PyIOBase)interp.get("f");
         assertNotNull(pyf);
 
         // This should get us an io.BufferedWriter (buffered binary file) called fb
-        interp.exec("fb = io.open('" + FB + "', 'wb')");
+        interp.exec("fb = io.open('" + FB + "', 'org.eclipse.wb')");
         PyIOBase pyfb = (PyIOBase)interp.get("fb");
         assertNotNull(pyfb);
 
@@ -242,13 +242,13 @@ public class _ioTest {
         );
 
         // This should get us an unbuffered binary PyFile called f
-        interp.exec("f = open('" + F + "', 'wb', 0)");
+        interp.exec("f = open('" + F + "', 'org.eclipse.wb', 0)");
         PyFile pyf = (PyFile)interp.get("f");
         assertNotNull(pyf);
         RawIOBase r = (RawIOBase)pyf.fileno().__tojava__(RawIOBase.class);
 
         // This should get us a buffered binary PyFile called fb
-        interp.exec("fb = open('" + FB + "', 'wb')");
+        interp.exec("fb = open('" + FB + "', 'org.eclipse.wb')");
         PyFile pyfb = (PyFile)interp.get("fb");
         assertNotNull(pyfb);
         RawIOBase rb = (RawIOBase)pyfb.fileno().__tojava__(RawIOBase.class);

@@ -757,7 +757,7 @@ def read(filename):
 
 def write(filename, data):
     """Write data to filename"""
-    fp = open(filename, 'wb')
+    fp = open(filename, 'org.eclipse.wb')
     fp.write(data)
     fp.close()
 

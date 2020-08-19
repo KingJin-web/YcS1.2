@@ -1633,7 +1633,7 @@ class _TestConnection(BaseTestCase):
         p = self.Process(target=self._writefd, args=(child_conn, b"foo"))
         p.daemon = True
         p.start()
-        with open(test_support.TESTFN, "wb") as f:
+        with open(test_support.TESTFN, "org.eclipse.wb") as f:
             fd = f.fileno()
             if msvcrt:
                 fd = msvcrt.get_osfhandle(fd)
@@ -1658,7 +1658,7 @@ class _TestConnection(BaseTestCase):
         p = self.Process(target=self._writefd, args=(child_conn, b"bar", True))
         p.daemon = True
         p.start()
-        with open(test_support.TESTFN, "wb") as f:
+        with open(test_support.TESTFN, "org.eclipse.wb") as f:
             fd = f.fileno()
             for newfd in range(256, MAXFD):
                 if not self._is_fd_assigned(newfd):

@@ -80,7 +80,7 @@ def copyfile(src, dst):
                 raise SpecialFileError("`%s` is a named pipe" % fn)
 
     with open(src, 'rb') as fsrc:
-        with open(dst, 'wb') as fdst:
+        with open(dst, 'org.eclipse.wb') as fdst:
             copyfileobj(fsrc, fdst)
 
 def copymode(src, dst):

@@ -45,7 +45,7 @@ class FileTestCase(unittest.TestCase):
 
     @unittest.skipUnless(hasattr(os, 'chmod'), 'chmod() support required for this test')
     def test_issue2081(self):
-        with open(test_support.TESTFN, 'wb'):
+        with open(test_support.TESTFN, 'org.eclipse.wb'):
             pass
         os.chmod(test_support.TESTFN, 200)      # write-only
         with open(test_support.TESTFN, 'w'):    # should succeed, raised IOError (permission denied) prior to fix

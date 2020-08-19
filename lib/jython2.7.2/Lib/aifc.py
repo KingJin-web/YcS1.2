@@ -563,7 +563,7 @@ class Aifc_write:
     def __init__(self, f):
         if type(f) == type(''):
             filename = f
-            f = __builtin__.open(f, 'wb')
+            f = __builtin__.open(f, 'org.eclipse.wb')
         else:
             # else, assume it is an open file object already
             filename = '???'
@@ -940,10 +940,10 @@ def open(f, mode=None):
             mode = 'rb'
     if mode in ('r', 'rb'):
         return Aifc_read(f)
-    elif mode in ('w', 'wb'):
+    elif mode in ('w', 'org.eclipse.wb'):
         return Aifc_write(f)
     else:
-        raise Error, "mode must be 'r', 'rb', 'w', or 'wb'"
+        raise Error, "mode must be 'r', 'rb', 'w', or 'org.eclipse.wb'"
 
 openfp = open # B/W compatibility
 

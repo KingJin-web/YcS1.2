@@ -566,7 +566,7 @@ class _singlefileMailbox(Mailbox):
         except IOError, e:
             if e.errno == errno.ENOENT:
                 if create:
-                    f = open(self._path, 'wb+')
+                    f = open(self._path, 'org.eclipse.wb+')
                 else:
                     raise NoSuchMailboxError(self._path)
             elif e.errno in (errno.EACCES, errno.EROFS):

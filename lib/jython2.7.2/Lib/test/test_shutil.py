@@ -582,7 +582,7 @@ class TestMove(unittest.TestCase):
                 filename)
         except OSError:
             self.dir_other_fs = None
-        with open(self.src_file, "wb") as f:
+        with open(self.src_file, "org.eclipse.wb") as f:
             f.write("spam")
 
     def tearDown(self):
@@ -671,7 +671,7 @@ class TestMove(unittest.TestCase):
 
     def test_existing_file_inside_dest_dir(self):
         # A file with the same name inside the destination dir already exists.
-        with open(self.dst_file, "wb"):
+        with open(self.dst_file, "org.eclipse.wb"):
             pass
         self.assertRaises(shutil.Error, shutil.move, self.src_file, self.dst_dir)
 

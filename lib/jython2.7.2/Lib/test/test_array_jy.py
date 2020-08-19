@@ -77,7 +77,7 @@ class ToFromfileTestCase(unittest.TestCase):
     def test_tofromfile(self):
         # http://bugs.jython.org/issue1457
         x = array('i', range(5))
-        with open(test_support.TESTFN, 'wb') as f:
+        with open(test_support.TESTFN, 'org.eclipse.wb') as f:
             x.tofile(f)
 
         x = array('i', [])

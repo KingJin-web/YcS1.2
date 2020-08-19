@@ -171,7 +171,7 @@ class BaseTest(unittest.TestCase):
         self.assertRaises(TypeError, a.tofile)
         self.assertRaises(TypeError, a.tofile, cStringIO.StringIO())
         test_support.unlink(test_support.TESTFN)
-        f = open(test_support.TESTFN, 'wb')
+        f = open(test_support.TESTFN, 'org.eclipse.wb')
         try:
             a.tofile(f)
             f.close()
@@ -199,7 +199,7 @@ class BaseTest(unittest.TestCase):
         # Issue #5395: Check if fromfile raises a proper IOError
         # instead of EOFError.
         a = array.array(self.typecode)
-        f = open(test_support.TESTFN, 'wb')
+        f = open(test_support.TESTFN, 'org.eclipse.wb')
         try:
             self.assertRaises(IOError, a.fromfile, f, len(self.example))
         finally:
@@ -208,7 +208,7 @@ class BaseTest(unittest.TestCase):
 
     def test_filewrite(self):
         a = array.array(self.typecode, 2*self.example)
-        f = open(test_support.TESTFN, 'wb')
+        f = open(test_support.TESTFN, 'org.eclipse.wb')
         try:
             f.write(a)
             f.close()

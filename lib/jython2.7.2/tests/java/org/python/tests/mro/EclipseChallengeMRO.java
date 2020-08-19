@@ -5,7 +5,7 @@ package org.python.tests.mro;
 
 /**
  * A class providing interface and abstract class relationships that approximate the structure of
- * org.eclipse.emf.ecore.util.DelegatingFeatureMap, in order to exercise b.j.o issue 2445. The
+ * org.org.eclipse.emf.ecore.util.DelegatingFeatureMap, in order to exercise b.j.o issue 2445. The
  * complex inheritance confused PyJavaType handling of the MRO. This class is imported by
  * {@code test_java_integration.JavaMROTest.test_mro_eclipse} as a test.
  * <p>

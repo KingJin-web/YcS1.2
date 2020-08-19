@@ -41,7 +41,7 @@ class TestGenericUnivNewlines(unittest.TestCase):
     # use a class variable DATA to define the data to write to the file
     # and a class variable NEWLINE to set the expected newlines value
     READMODE = 'r'
-    WRITEMODE = 'wb'
+    WRITEMODE = 'org.eclipse.wb'
 
     def setUp(self):
         data = self.DATA

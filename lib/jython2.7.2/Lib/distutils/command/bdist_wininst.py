@@ -267,7 +267,7 @@ class bdist_wininst (Command):
         else:
             bitmaplen = 0
 
-        file = open(installer_name, "wb")
+        file = open(installer_name, "org.eclipse.wb")
         file.write(self.get_exe_bytes())
         if bitmap:
             file.write(bitmapdata)

@@ -554,7 +554,7 @@ class ByteArrayTest(BaseBytesTest):
         tfn = tempfile.mktemp()
         try:
             # Prepare
-            with open(tfn, "wb") as f:
+            with open(tfn, "org.eclipse.wb") as f:
                 f.write(short_sample)
             # Test readinto
             with open(tfn, "rb") as f:
@@ -565,7 +565,7 @@ class ByteArrayTest(BaseBytesTest):
             b_sample = (ord(s) for s in sample)
             self.assertEqual(list(b), list(b_sample))
             # Test writing in binary mode
-            with open(tfn, "wb") as f:
+            with open(tfn, "org.eclipse.wb") as f:
                 f.write(b)
             with open(tfn, "rb") as f:
                 self.assertEqual(f.read(), sample)

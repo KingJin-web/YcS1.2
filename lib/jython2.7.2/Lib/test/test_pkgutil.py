@@ -31,14 +31,14 @@ class PkgutilTests(unittest.TestCase):
         package_dir = os.path.join(self.dirname, pkg)
         os.mkdir(package_dir)
         # Empty init.py
-        f = open(os.path.join(package_dir, '__init__.py'), "wb")
+        f = open(os.path.join(package_dir, '__init__.py'), "org.eclipse.wb")
         f.close()
         # Resource files, res.txt, sub/res.txt
-        f = open(os.path.join(package_dir, 'res.txt'), "wb")
+        f = open(os.path.join(package_dir, 'res.txt'), "org.eclipse.wb")
         f.write(RESOURCE_DATA)
         f.close()
         os.mkdir(os.path.join(package_dir, 'sub'))
-        f = open(os.path.join(package_dir, 'sub', 'res.txt'), "wb")
+        f = open(os.path.join(package_dir, 'sub', 'res.txt'), "org.eclipse.wb")
         f.write(RESOURCE_DATA)
         f.close()
 

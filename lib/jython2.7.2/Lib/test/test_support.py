@@ -663,7 +663,7 @@ def make_bad_fd():
     Create an invalid file descriptor by opening and closing a file and return
     its fd.
     """
-    file = open(TESTFN, "wb")
+    file = open(TESTFN, "org.eclipse.wb")
     try:
         return file.fileno()
     finally:
@@ -702,7 +702,7 @@ def open_urlresource(url, check=None):
     print >> get_original_stdout(), '\tfetching %s ...' % url
     f = urllib2.urlopen(url, timeout=15)
     try:
-        with open(fn, "wb") as out:
+        with open(fn, "org.eclipse.wb") as out:
             s = f.read()
             while s:
                 out.write(s)

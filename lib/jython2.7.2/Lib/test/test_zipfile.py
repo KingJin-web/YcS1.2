@@ -19,7 +19,7 @@ class TestsWithSourceFile(unittest.TestCase):
         self.data = '\n'.join(line_gen)
 
         # Make a source file with some lines
-        fp = open(TESTFN, "wb")
+        fp = open(TESTFN, "org.eclipse.wb")
         fp.write(self.data)
         fp.close()
 
@@ -127,7 +127,7 @@ class TestZip64InSmallFiles(unittest.TestCase):
         self.data = '\n'.join(line_gen)
 
         # Make a source file with some lines
-        fp = open(TESTFN, "wb")
+        fp = open(TESTFN, "org.eclipse.wb")
         fp.write(self.data)
         fp.close()
 

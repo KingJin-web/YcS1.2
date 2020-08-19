@@ -79,7 +79,7 @@ class urlopen_FileTests(unittest.TestCase):
     def setUp(self):
         """Setup of a temp file to use for testing"""
         self.text = "test_urllib: %s\n" % self.__class__.__name__
-        FILE = file(test_support.TESTFN, 'wb')
+        FILE = file(test_support.TESTFN, 'org.eclipse.wb')
         try:
             FILE.write(self.text)
         finally:
@@ -386,7 +386,7 @@ class urlretrieve_FileTests(unittest.TestCase):
         self.registerFileForCleanUp(test_support.TESTFN)
         self.text = 'testing urllib.urlretrieve'
         try:
-            FILE = file(test_support.TESTFN, 'wb')
+            FILE = file(test_support.TESTFN, 'org.eclipse.wb')
             FILE.write(self.text)
             FILE.close()
         finally:
@@ -410,7 +410,7 @@ class urlretrieve_FileTests(unittest.TestCase):
         newFd, newFilePath = tempfile.mkstemp()
         try:
             self.registerFileForCleanUp(newFilePath)
-            newFile = os.fdopen(newFd, "wb")
+            newFile = os.fdopen(newFd, "org.eclipse.wb")
             newFile.write(data)
             newFile.close()
         finally:

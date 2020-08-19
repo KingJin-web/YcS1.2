@@ -247,7 +247,7 @@ from __future__ import print_function"""
             try:
                 os.mkdir(os.path.join(dir, "a_dir"))
                 for fn in structure:
-                    open(os.path.join(dir, fn), "wb").close()
+                    open(os.path.join(dir, fn), "org.eclipse.wb").close()
                 rt.refactor_dir(dir)
             finally:
                 refactor.RefactoringTool.refactor_file = save_func

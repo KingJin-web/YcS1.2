@@ -58,7 +58,7 @@ class AIFCTest(unittest.TestCase):
 
     def test_write(self):
         f = self.f = aifc.open(self.sndfilepath)
-        fout = self.fout = aifc.open(TESTFN, 'wb')
+        fout = self.fout = aifc.open(TESTFN, 'org.eclipse.wb')
         fout.aifc()
         fout.setparams(f.getparams())
         for frame in range(f.getnframes()):
@@ -72,7 +72,7 @@ class AIFCTest(unittest.TestCase):
     @unittest.skipIf(is_jython, "FIXME: not working in Jython")
     def test_compress(self):
         f = self.f = aifc.open(self.sndfilepath)
-        fout = self.fout = aifc.open(TESTFN, 'wb')
+        fout = self.fout = aifc.open(TESTFN, 'org.eclipse.wb')
         fout.aifc()
         fout.setnchannels(f.getnchannels())
         fout.setsampwidth(f.getsampwidth())

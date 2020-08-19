@@ -22,7 +22,7 @@ class TestWave(unittest.TestCase):
             pass
 
     def test_it(self):
-        self.f = wave.open(TESTFN, 'wb')
+        self.f = wave.open(TESTFN, 'org.eclipse.wb')
         self.f.setnchannels(nchannels)
         self.f.setsampwidth(sampwidth)
         self.f.setframerate(framerate)

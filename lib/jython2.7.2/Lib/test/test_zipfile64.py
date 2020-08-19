@@ -39,7 +39,7 @@ class TestsWithSourceFile(unittest.TestCase):
         self.data = '\n'.join(line_gen)
 
         # And write it to a file.
-        fp = open(TESTFN, "wb")
+        fp = open(TESTFN, "org.eclipse.wb")
         fp.write(self.data)
         fp.close()
 

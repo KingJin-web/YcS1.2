@@ -705,7 +705,7 @@ class StreamRequestHandler(BaseRequestHandler):
             self.connection.setsockopt(socket.IPPROTO_TCP,
                                        socket.TCP_NODELAY, True)
         self.rfile = self.connection.makefile('rb', self.rbufsize)
-        self.wfile = self.connection.makefile('wb', self.wbufsize)
+        self.wfile = self.connection.makefile('org.eclipse.wb', self.wbufsize)
 
     def finish(self):
         if not self.wfile.closed:

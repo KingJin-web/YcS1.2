@@ -250,7 +250,7 @@ class URLopener:
         try:
             headers = fp.info()
             if filename:
-                tfp = open(filename, 'wb')
+                tfp = open(filename, 'org.eclipse.wb')
             else:
                 import tempfile
                 garbage, path = splittype(url)
@@ -260,7 +260,7 @@ class URLopener:
                 suffix = os.path.splitext(path)[1]
                 (fd, filename) = tempfile.mkstemp(suffix)
                 self.__tempfiles.append(filename)
-                tfp = os.fdopen(fd, 'wb')
+                tfp = os.fdopen(fd, 'org.eclipse.wb')
             try:
                 result = filename, headers
                 if self.tempcache is not None:

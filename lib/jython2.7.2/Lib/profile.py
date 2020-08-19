@@ -410,7 +410,7 @@ class Profile:
                   print_stats()
 
     def dump_stats(self, file):
-        f = open(file, 'wb')
+        f = open(file, 'org.eclipse.wb')
         self.create_stats()
         marshal.dump(self.stats, f)
         f.close()

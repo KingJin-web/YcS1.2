@@ -689,7 +689,7 @@ class HandlerTests(unittest.TestCase):
             urls.append("file://%s%s" % (localaddr, urlpath))
 
         for url in urls:
-            f = open(TESTFN, "wb")
+            f = open(TESTFN, "org.eclipse.wb")
             try:
                 try:
                     f.write(towrite)
@@ -722,7 +722,7 @@ class HandlerTests(unittest.TestCase):
             (os.getcwd(), TESTFN),
             ]:
             try:
-                f = open(TESTFN, "wb")
+                f = open(TESTFN, "org.eclipse.wb")
                 try:
                     f.write(towrite)
                 finally:

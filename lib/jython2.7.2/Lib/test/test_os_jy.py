@@ -78,7 +78,7 @@ class OSFileTestCase(unittest.TestCase):
 
     def test_issue1793(self):
         # prepare the input file containing 256 bytes of sorted byte-sized numbers
-        fd = file(test_support.TESTFN, 'wb')
+        fd = file(test_support.TESTFN, 'org.eclipse.wb')
         try:
             for x in range(256):
                 fd.write(chr(x))

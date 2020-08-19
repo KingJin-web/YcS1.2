@@ -17,7 +17,7 @@ public class IOHelper {
 		if (c != null) {
 			/**
 			 * 	关于如何打开错误解决窗口 
-			 * 	1, 鼠标停在 报错 点上, eclipse 会给出解决方案, 其中就包括 try
+			 * 	1, 鼠标停在 报错 点上, org.eclipse 会给出解决方案, 其中就包括 try
 			 * 	2, 光标停在 报错 点上  ctrl + 1
 			 */
 			try {

@@ -799,7 +799,7 @@ class ElementTree(object):
         if hasattr(file_or_filename, "write"):
             file = file_or_filename
         else:
-            file = open(file_or_filename, "wb")
+            file = open(file_or_filename, "org.eclipse.wb")
         try:
             write = file.write
             if not encoding:

@@ -671,9 +671,9 @@ no_jump_to_non_integers.jump = (2, "Spam")
 no_jump_to_non_integers.output = [True]
 
 def jump_across_with(output):
-    with open(test_support.TESTFN, "wb") as fp:
+    with open(test_support.TESTFN, "org.eclipse.wb") as fp:
         pass
-    with open(test_support.TESTFN, "wb") as fp:
+    with open(test_support.TESTFN, "org.eclipse.wb") as fp:
         pass
 jump_across_with.jump = (1, 3)
 jump_across_with.output = []

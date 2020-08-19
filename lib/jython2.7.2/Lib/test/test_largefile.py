@@ -34,7 +34,7 @@ if sys.platform[:3] == 'win' or sys.platform == 'darwin' or test_support.is_jyth
 else:
     # Only run if the current filesystem supports large files.
     # (Skip this test on Windows, since we now always support large files.)
-    f = open(test_support.TESTFN, 'wb')
+    f = open(test_support.TESTFN, 'org.eclipse.wb')
     try:
         # 2**31 == 2147483648
         f.seek(2147483649L)
@@ -68,7 +68,7 @@ def expect(got_this, expect_this):
 
 if test_support.verbose:
     print 'create large file via seek (may be sparse file) ...'
-f = open(name, 'wb')
+f = open(name, 'org.eclipse.wb')
 try:
     f.write('z')
     f.seek(0)

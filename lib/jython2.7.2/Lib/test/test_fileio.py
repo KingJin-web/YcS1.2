@@ -62,7 +62,7 @@ class AutoFileTests(unittest.TestCase):
         # verify expected attributes exist
         f = self.f
 
-        self.assertEqual(f.mode, "wb")
+        self.assertEqual(f.mode, "org.eclipse.wb")
         self.assertEqual(f.closed, False)
 
         # verify the attributes are readonly
@@ -416,7 +416,7 @@ class OtherFileTests(unittest.TestCase):
 
     def testAppend(self):
 
-        f = self.f = open(TESTFN, 'wb')
+        f = self.f = open(TESTFN, 'org.eclipse.wb')
         f.write(b'spam')
         f.close()
         f = self.f = open(TESTFN, 'ab')

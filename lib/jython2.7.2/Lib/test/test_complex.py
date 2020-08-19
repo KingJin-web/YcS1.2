@@ -479,7 +479,7 @@ class ComplexTest(unittest.TestCase):
 
         fo = None
         try:
-            fo = open(test_support.TESTFN, "wb")
+            fo = open(test_support.TESTFN, "org.eclipse.wb")
             print >>fo, a, b
             fo.close()
             fo = open(test_support.TESTFN, "rb")

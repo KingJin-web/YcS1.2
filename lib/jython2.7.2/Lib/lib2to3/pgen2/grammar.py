@@ -86,7 +86,7 @@ class Grammar(object):
 
     def dump(self, filename):
         """Dump the grammar tables to a pickle file."""
-        f = open(filename, "wb")
+        f = open(filename, "org.eclipse.wb")
         pickle.dump(self.__dict__, f, 2)
         f.close()
 

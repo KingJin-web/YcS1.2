@@ -208,7 +208,7 @@ def _get_default_tempdir():
                 fd = _os.open(filename, flags, 0o600)
                 try:
                     try:
-                        with _io.open(fd, 'wb', closefd=False) as fp:
+                        with _io.open(fd, 'org.eclipse.wb', closefd=False) as fp:
                             fp.write(b'blat')
                     finally:
                         _os.close(fd)

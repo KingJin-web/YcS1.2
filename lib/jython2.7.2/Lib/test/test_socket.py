@@ -1482,7 +1482,7 @@ class TCPFileObjectClassOpenCloseTests(SocketConnectedTest):
         self.assertEqual(msg, MSG)
 
     def _testCloseFileDoesNotCloseSocket(self):
-        self.cli_file = self.serv_conn.makefile('wb')
+        self.cli_file = self.serv_conn.makefile('org.eclipse.wb')
         self.cli_file.close()
         try:
             self.serv_conn.send(MSG)
@@ -1494,7 +1494,7 @@ class TCPFileObjectClassOpenCloseTests(SocketConnectedTest):
         self.assertEqual(msg, MSG)
 
     def _testCloseSocketDoesNotCloseFile(self):
-        self.cli_file = self.serv_conn.makefile('wb')
+        self.cli_file = self.serv_conn.makefile('org.eclipse.wb')
         self.serv_conn.close()
         try:
             self.cli_file.write(MSG)
@@ -1510,7 +1510,7 @@ class UDPFileObjectClassOpenCloseTests(ThreadedUDPSocketTest):
         self.assertEqual(msg, MSG)
 
     def _testCloseFileDoesNotCloseSocket(self):
-        self.cli_file = self.cli.makefile('wb')
+        self.cli_file = self.cli.makefile('org.eclipse.wb')
         self.cli_file.close()
         try:
             self.cli.sendto(MSG, 0, (self.HOST, self.PORT))
@@ -1541,7 +1541,7 @@ class FileAndDupOpenCloseTests(SocketConnectedTest):
     def _testCloseDoesNotCloseOthers(self):
         self.dup_conn1 = self.serv_conn.dup()
         self.dup_conn2 = self.serv_conn.dup()
-        self.cli_file = self.serv_conn.makefile('wb')
+        self.cli_file = self.serv_conn.makefile('org.eclipse.wb')
         self.serv_conn.close()
         self.dup_conn1.close()
 
@@ -1587,7 +1587,7 @@ class FileObjectClassTestCase(SocketConnectedTest):
 
     def clientSetUp(self):
         SocketConnectedTest.clientSetUp(self)
-        self.cli_file = self.serv_conn.makefile('wb')
+        self.cli_file = self.serv_conn.makefile('org.eclipse.wb')
 
     def clientTearDown(self):
         self.cli_file.close()

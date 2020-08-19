@@ -27,7 +27,7 @@ def randfloats(n):
         result = [r() for i in xrange(n)]
         try:
             try:
-                fp = open(fn, "wb")
+                fp = open(fn, "org.eclipse.wb")
                 marshal.dump(result, fp)
                 fp.close()
                 fp = None

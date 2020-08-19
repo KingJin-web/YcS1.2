@@ -1152,7 +1152,7 @@ def gzip_encode(data):
     if not gzip:
         raise NotImplementedError
     f = StringIO.StringIO()
-    gzf = gzip.GzipFile(mode="wb", fileobj=f, compresslevel=1)
+    gzf = gzip.GzipFile(mode="org.eclipse.wb", fileobj=f, compresslevel=1)
     gzf.write(data)
     gzf.close()
     encoded = f.getvalue()

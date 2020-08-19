@@ -188,7 +188,7 @@ class StatAttributeTests(unittest.TestCase):
     def setUp(self):
         os.mkdir(test_support.TESTFN)
         self.fname = os.path.join(test_support.TESTFN, "f1")
-        f = open(self.fname, 'wb')
+        f = open(self.fname, 'org.eclipse.wb')
         f.write("ABC")
         f.close()
 

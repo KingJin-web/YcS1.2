@@ -82,7 +82,7 @@ class UncompressedZipImportTestCase(ImportHooksBaseTestCase):
                 data = f.read()
                 f.close()
 
-                f = open(TEMP_ZIP, "wb")
+                f = open(TEMP_ZIP, "org.eclipse.wb")
                 f.write(stuff)
                 f.write(data)
                 f.close()

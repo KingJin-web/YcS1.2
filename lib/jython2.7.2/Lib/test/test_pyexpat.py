@@ -219,7 +219,7 @@ class ParseTest(unittest.TestCase):
         self.assertEqual(op[16], "End element: u'root'")
 
         # Issue 4877: expat.ParseFile causes segfault on a closed file.
-        fp = open(test_support.TESTFN, 'wb')
+        fp = open(test_support.TESTFN, 'org.eclipse.wb')
         try:
             fp.close()
             parser = expat.ParserCreate()

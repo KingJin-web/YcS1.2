@@ -540,6 +540,40 @@ public class DBHelper {
         }
     }
 
+    /**
+     * 提交数据
+     */
+    public void commit() {
+        try {
+            conn.commit();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 回滚数据
+     */
+    public void rollback() {
+        try {
+            conn.rollback();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 关闭连接
+     */
+    public void close() {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 //	public List<Map<String, Object>> query1(String sql, Class<Lend> class1, Object[] array) {
 //		// TODO Auto-generated method stub
 //		return null;

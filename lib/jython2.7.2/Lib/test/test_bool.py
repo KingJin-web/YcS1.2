@@ -20,7 +20,7 @@ class BoolTest(unittest.TestCase):
 
     def test_print(self):
         try:
-            fo = open(test_support.TESTFN, "wb")
+            fo = open(test_support.TESTFN, "org.eclipse.wb")
             print >> fo, False, True
             fo.close()
             fo = open(test_support.TESTFN, "rb")

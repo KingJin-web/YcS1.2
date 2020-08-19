@@ -32,7 +32,7 @@ class SerializableProxies(CustomMaker):
                 os.makedirs(parent)
             except OSError:
                 pass  # Directory exists
-            with open(path, "wb") as f:
+            with open(path, "org.eclipse.wb") as f:
                 f.write(bytes.toByteArray())
 
     def makeClass(self):

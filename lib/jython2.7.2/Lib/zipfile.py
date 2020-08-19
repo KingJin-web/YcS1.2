@@ -749,7 +749,7 @@ class ZipFile(object):
         if isinstance(file, basestring):
             self._filePassed = 0
             self.filename = file
-            modeDict = {'r' : 'rb', 'w': 'wb', 'a' : 'r+b'}
+            modeDict = {'r' : 'rb', 'w': 'org.eclipse.wb', 'a' : 'r+b'}
             try:
                 self.fp = open(file, modeDict[mode])
             except IOError:
@@ -1075,7 +1075,7 @@ class ZipFile(object):
             return targetpath
 
         with self.open(member, pwd=pwd) as source, \
-             file(targetpath, "wb") as target:
+             file(targetpath, "org.eclipse.wb") as target:
             shutil.copyfileobj(source, target)
 
         return targetpath
@@ -1501,7 +1501,7 @@ def main(args = None):
                 tgtdir = os.path.dirname(tgt)
                 if not os.path.exists(tgtdir):
                     os.makedirs(tgtdir)
-                with open(tgt, 'wb') as fp:
+                with open(tgt, 'org.eclipse.wb') as fp:
                     fp.write(zf.read(path))
 
     elif args[0] == '-c':

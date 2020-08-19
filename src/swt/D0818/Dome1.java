@@ -20,6 +20,7 @@ public class Dome1 {
      * @param args
      */
     public static void main(String[] args) {
+
         try {
             Dome1 window = new Dome1();
             window.open();

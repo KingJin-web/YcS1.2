@@ -68,7 +68,7 @@ class CommonTest(seq_tests.CommonTest):
         d.append(d)
         d.append(400)
         try:
-            with open(test_support.TESTFN, "wb") as fo:
+            with open(test_support.TESTFN, "org.eclipse.wb") as fo:
                 print >> fo, d,
             with open(test_support.TESTFN, "rb") as fo:
                 self.assertEqual(fo.read(), repr(d))

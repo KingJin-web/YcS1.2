@@ -179,7 +179,7 @@ class CommonReadTest(ReadTest):
         # Test for issue6123: Allow opening empty archives.
         # This test guarantees that tarfile.open() does not treat an empty
         # file as an empty tar archive.
-        open(tmpname, "wb").close()
+        open(tmpname, "org.eclipse.wb").close()
         self.assertRaises(tarfile.ReadError, tarfile.open, tmpname, self.mode)
         self.assertRaises(tarfile.ReadError, tarfile.open, tmpname)
 
@@ -195,7 +195,7 @@ class CommonReadTest(ReadTest):
         for char in ('\0', 'a'):
             # Test if EOFHeaderError ('\0') and InvalidHeaderError ('a')
             # are ignored correctly.
-            fobj = _open(tmpname, "wb")
+            fobj = _open(tmpname, "org.eclipse.wb")
             fobj.write(char * 1024)
             fobj.write(tarfile.TarInfo("foo").tobuf())
             fobj.close()
@@ -336,7 +336,7 @@ class MiscReadTest(CommonReadTest):
         # constructor in case of an error. For the test we rely on
         # the fact that opening an empty file raises a ReadError.
         empty = os.path.join(TEMPDIR, "empty")
-        open(empty, "wb").write("")
+        open(empty, "org.eclipse.wb").write("")
 
         try:
             tar = object.__new__(tarfile.TarFile)
@@ -454,7 +454,7 @@ class DetectReadTest(unittest.TestCase):
             data = fobj.read()
 
         # Compress with blocksize 100kB, the file starts with "BZh11".
-        with bz2.BZ2File(tmpname, "wb", compresslevel=1) as fobj:
+        with bz2.BZ2File(tmpname, "org.eclipse.wb", compresslevel=1) as fobj:
             fobj.write(data)
 
         self._testfunc_file(tmpname, "r|*")
@@ -519,7 +519,7 @@ class MemberReadTest(ReadTest):
         self._test_member(tarinfo, size=86016, chksum=md5_sparse)
 
     def test_find_umlauts(self):
-        tarinfo = self.tar.getmember("ustar/umlauts-ÄÖÜäöüß")
+        tarinfo = self.tar.getmember("ustar/umlauts-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
         self._test_member(tarinfo, size=7011, chksum=md5_regtype)
 
     def test_find_ustar_longname(self):
@@ -532,7 +532,7 @@ class MemberReadTest(ReadTest):
 
     def test_find_pax_umlauts(self):
         self.tar = tarfile.open(self.tarname, mode=self.mode, encoding="iso8859-1")
-        tarinfo = self.tar.getmember("pax/umlauts-ÄÖÜäöüß")
+        tarinfo = self.tar.getmember("pax/umlauts-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
         self._test_member(tarinfo, size=7011, chksum=md5_regtype)
 
 
@@ -600,17 +600,17 @@ class PaxReadTest(LongnameTest):
         tarinfo = tar.getmember("pax/regtype1")
         self.assertEqual(tarinfo.uname, "foo")
         self.assertEqual(tarinfo.gname, "bar")
-        self.assertEqual(tarinfo.pax_headers.get("VENDOR.umlauts"), u"ÄÖÜäöüß")
+        self.assertEqual(tarinfo.pax_headers.get("VENDOR.umlauts"), u"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
 
         tarinfo = tar.getmember("pax/regtype2")
         self.assertEqual(tarinfo.uname, "")
         self.assertEqual(tarinfo.gname, "bar")
-        self.assertEqual(tarinfo.pax_headers.get("VENDOR.umlauts"), u"ÄÖÜäöüß")
+        self.assertEqual(tarinfo.pax_headers.get("VENDOR.umlauts"), u"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
 
         tarinfo = tar.getmember("pax/regtype3")
         self.assertEqual(tarinfo.uname, "tarfile")
         self.assertEqual(tarinfo.gname, "tarfile")
-        self.assertEqual(tarinfo.pax_headers.get("VENDOR.umlauts"), u"ÄÖÜäöüß")
+        self.assertEqual(tarinfo.pax_headers.get("VENDOR.umlauts"), u"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
 
     def test_pax_number_fields(self):
         # All following number fields are read from the pax header.
@@ -661,7 +661,7 @@ class WriteTest(WriteTestBase):
         # Test for bug #1013882.
         tar = tarfile.open(tmpname, self.mode)
         path = os.path.join(TEMPDIR, "file")
-        fobj = open(path, "wb")
+        fobj = open(path, "org.eclipse.wb")
         fobj.write("aaa")
         fobj.close()
         tar.add(path)
@@ -674,12 +674,12 @@ class WriteTest(WriteTestBase):
         tar = tarfile.open(tmpname, self.mode)
 
         path = os.path.join(TEMPDIR, "file")
-        fobj = open(path, "wb")
+        fobj = open(path, "org.eclipse.wb")
         fobj.close()
         tarinfo = tar.gettarinfo(path)
         self.assertEqual(tarinfo.size, 0)
 
-        fobj = open(path, "wb")
+        fobj = open(path, "org.eclipse.wb")
         fobj.write("aaa")
         fobj.close()
         tarinfo = tar.gettarinfo(path)
@@ -701,7 +701,7 @@ class WriteTest(WriteTestBase):
         if hasattr(os, "link"):
             link = os.path.join(TEMPDIR, "link")
             target = os.path.join(TEMPDIR, "link_target")
-            fobj = open(target, "wb")
+            fobj = open(target, "org.eclipse.wb")
             fobj.write("aaa")
             fobj.close()
             os.link(target, link)
@@ -748,7 +748,7 @@ class WriteTest(WriteTestBase):
         try:
             for name in ("foo", "bar", "baz"):
                 name = os.path.join(tempdir, name)
-                open(name, "wb").close()
+                open(name, "org.eclipse.wb").close()
 
             exclude = os.path.isfile
 
@@ -770,7 +770,7 @@ class WriteTest(WriteTestBase):
         try:
             for name in ("foo", "bar", "baz"):
                 name = os.path.join(tempdir, name)
-                open(name, "wb").close()
+                open(name, "org.eclipse.wb").close()
 
             def filter(tarinfo):
                 if os.path.basename(tarinfo.name) == "bar":
@@ -1092,7 +1092,7 @@ class HardlinkTest(unittest.TestCase):
         self.foo = os.path.join(TEMPDIR, "foo")
         self.bar = os.path.join(TEMPDIR, "bar")
 
-        fobj = open(self.foo, "wb")
+        fobj = open(self.foo, "org.eclipse.wb")
         fobj.write("foo")
         fobj.close()
 
@@ -1151,8 +1151,8 @@ class PaxWriteTest(GNUWriteTest):
                 u"foo": u"bar",
                 u"uid": u"0",
                 u"mtime": u"1.23",
-                u"test": u"äöü",
-                u"äöü": u"test"}
+                u"test": u"ï¿½ï¿½ï¿½",
+                u"ï¿½ï¿½ï¿½": u"test"}
 
         tar = tarfile.open(tmpname, "w", format=tarfile.PAX_FORMAT,
                 pax_headers=pax_headers)
@@ -1181,7 +1181,7 @@ class PaxWriteTest(GNUWriteTest):
 
         tar = tarfile.open(tmpname, "w", format=tarfile.PAX_FORMAT, encoding="iso8859-1")
         t = tarfile.TarInfo()
-        t.name = u"äöü"     # non-ASCII
+        t.name = u"ï¿½ï¿½ï¿½"     # non-ASCII
         t.uid = 8**8        # too large
         t.pax_headers = pax_headers
         tar.addfile(t)
@@ -1210,7 +1210,7 @@ class UstarUnicodeTest(unittest.TestCase):
 
     def _test_unicode_filename(self, encoding):
         tar = tarfile.open(tmpname, "w", format=self.format, encoding=encoding, errors="strict")
-        name = u"äöü"
+        name = u"ï¿½ï¿½ï¿½"
         tar.addfile(tarfile.TarInfo(name))
         tar.close()
 
@@ -1223,17 +1223,17 @@ class UstarUnicodeTest(unittest.TestCase):
         tar = tarfile.open(tmpname, "w", format=self.format, encoding="ascii", errors="strict")
         tarinfo = tarfile.TarInfo()
 
-        tarinfo.name = "äöü"
+        tarinfo.name = "ï¿½ï¿½ï¿½"
         if self.format == tarfile.PAX_FORMAT:
             self.assertRaises(UnicodeError, tar.addfile, tarinfo)
         else:
             tar.addfile(tarinfo)
 
-        tarinfo.name = u"äöü"
+        tarinfo.name = u"ï¿½ï¿½ï¿½"
         self.assertRaises(UnicodeError, tar.addfile, tarinfo)
 
         tarinfo.name = "foo"
-        tarinfo.uname = u"äöü"
+        tarinfo.uname = u"ï¿½ï¿½ï¿½"
         self.assertRaises(UnicodeError, tar.addfile, tarinfo)
 
     def test_unicode_argument(self):
@@ -1246,7 +1246,7 @@ class UstarUnicodeTest(unittest.TestCase):
         tar.close()
 
     def test_uname_unicode(self):
-        for name in (u"äöü", "äöü"):
+        for name in (u"ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½"):
             t = tarfile.TarInfo("foo")
             t.uname = name
             t.gname = name
@@ -1259,8 +1259,8 @@ class UstarUnicodeTest(unittest.TestCase):
 
             tar = tarfile.open("foo.tar", fileobj=fobj, encoding="iso8859-1")
             t = tar.getmember("foo")
-            self.assertEqual(t.uname, "äöü")
-            self.assertEqual(t.gname, "äöü")
+            self.assertEqual(t.uname, "ï¿½ï¿½ï¿½")
+            self.assertEqual(t.gname, "ï¿½ï¿½ï¿½")
 
 
 class GNUUnicodeTest(UstarUnicodeTest):
@@ -1282,9 +1282,9 @@ class PaxUnicodeTest(UstarUnicodeTest):
     def test_error_handlers(self):
         # Test if the unicode error handlers work correctly for characters
         # that cannot be expressed in a given encoding.
-        self._create_unicode_name(u"äöü")
+        self._create_unicode_name(u"ï¿½ï¿½ï¿½")
 
-        for handler, name in (("utf-8", u"äöü".encode("utf8")),
+        for handler, name in (("utf-8", u"ï¿½ï¿½ï¿½".encode("utf8")),
                     ("replace", "???"), ("ignore", "")):
             tar = tarfile.open(tmpname, format=self.format, encoding="ascii",
                     errors=handler)
@@ -1296,11 +1296,11 @@ class PaxUnicodeTest(UstarUnicodeTest):
     def test_error_handler_utf8(self):
         # Create a pathname that has one component representable using
         # iso8859-1 and the other only in iso8859-15.
-        self._create_unicode_name(u"äöü/¤")
+        self._create_unicode_name(u"ï¿½ï¿½ï¿½/ï¿½")
 
         tar = tarfile.open(tmpname, format=self.format, encoding="iso8859-1",
                 errors="utf-8")
-        self.assertEqual(tar.getnames()[0], "äöü/" + u"¤".encode("utf8"))
+        self.assertEqual(tar.getnames()[0], "ï¿½ï¿½ï¿½/" + u"ï¿½".encode("utf8"))
 
 
 class AppendTest(unittest.TestCase):
@@ -1373,7 +1373,7 @@ class AppendTest(unittest.TestCase):
     # Append mode is supposed to fail if the tarfile to append to
     # does not end with a zero block.
     def _test_error(self, data):
-        open(self.tarname, "wb").write(data)
+        open(self.tarname, "org.eclipse.wb").write(data)
         self.assertRaises(tarfile.ReadError, self._add_testfile)
 
     def test_null(self):
@@ -1501,7 +1501,7 @@ class ContextManagerTest(unittest.TestCase):
     def test_fileobj(self):
         # Test that __exit__() did not close the external file
         # object.
-        fobj = open(tmpname, "wb")
+        fobj = open(tmpname, "org.eclipse.wb")
         try:
             with tarfile.open(fileobj=fobj, mode="w") as tar:
                 raise Exception
@@ -1630,7 +1630,7 @@ def test_main():
 
     if gzip:
         # Create testtar.tar.gz and add gzip-specific tests.
-        tar = gzip.open(gzipname, "wb")
+        tar = gzip.open(gzipname, "org.eclipse.wb")
         tar.write(data)
         tar.close()
 
@@ -1644,7 +1644,7 @@ def test_main():
 
     if bz2:
         # Create testtar.tar.bz2 and add bz2-specific tests.
-        tar = bz2.BZ2File(bz2name, "wb")
+        tar = bz2.BZ2File(bz2name, "org.eclipse.wb")
         tar.write(data)
         tar.close()
 

@@ -162,7 +162,7 @@ class Stats:
 
     def dump_stats(self, filename):
         """Write the profile data to a file we know how to load back."""
-        f = file(filename, 'wb')
+        f = file(filename, 'org.eclipse.wb')
         try:
             marshal.dump(self.stats, f)
         finally:

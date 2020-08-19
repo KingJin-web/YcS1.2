@@ -104,7 +104,7 @@ def bootstrap(root=None, upgrade=False, user=False,
                 "ensurepip",
                 "_bundled/{}".format(wheel_name),
             )
-            with open(os.path.join(tmpdir, wheel_name), "wb") as fp:
+            with open(os.path.join(tmpdir, wheel_name), "org.eclipse.wb") as fp:
                 fp.write(whl)
 
             additional_paths.append(os.path.join(tmpdir, wheel_name))

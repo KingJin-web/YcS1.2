@@ -73,7 +73,7 @@ class GenericTest(unittest.TestCase):
                     self.assertNotEqual(s1[n:n+1], s2[n:n+1])
 
     def test_getsize(self):
-        f = open(test_support.TESTFN, "wb")
+        f = open(test_support.TESTFN, "org.eclipse.wb")
         try:
             f.write("foo")
             f.close()
@@ -84,7 +84,7 @@ class GenericTest(unittest.TestCase):
             test_support.unlink(test_support.TESTFN)
 
     def test_time(self):
-        f = open(test_support.TESTFN, "wb")
+        f = open(test_support.TESTFN, "org.eclipse.wb")
         try:
             f.write("foo")
             f.close()
@@ -107,7 +107,7 @@ class GenericTest(unittest.TestCase):
 
     def test_exists(self):
         self.assertIs(self.pathmodule.exists(test_support.TESTFN), False)
-        f = open(test_support.TESTFN, "wb")
+        f = open(test_support.TESTFN, "org.eclipse.wb")
         try:
             f.write("foo")
             f.close()
@@ -122,7 +122,7 @@ class GenericTest(unittest.TestCase):
 
     def test_isdir(self):
         self.assertIs(self.pathmodule.isdir(test_support.TESTFN), False)
-        f = open(test_support.TESTFN, "wb")
+        f = open(test_support.TESTFN, "org.eclipse.wb")
         try:
             f.write("foo")
             f.close()
@@ -139,7 +139,7 @@ class GenericTest(unittest.TestCase):
 
     def test_isfile(self):
         self.assertIs(self.pathmodule.isfile(test_support.TESTFN), False)
-        f = open(test_support.TESTFN, "wb")
+        f = open(test_support.TESTFN, "org.eclipse.wb")
         try:
             f.write("foo")
             f.close()

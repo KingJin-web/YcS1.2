@@ -40,7 +40,7 @@ class CompileallTests(unittest.TestCase):
         self.assertEqual(*self.data())
         with open(self.bc_path, 'rb') as file:
             bc = file.read()[len(metadata):]
-        with open(self.bc_path, 'wb') as file:
+        with open(self.bc_path, 'org.eclipse.wb') as file:
             file.write(metadata)
             file.write(bc)
         self.assertNotEqual(*self.data())

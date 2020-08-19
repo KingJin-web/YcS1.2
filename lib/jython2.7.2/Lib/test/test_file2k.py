@@ -18,7 +18,7 @@ class AutoFileTests(unittest.TestCase):
     # file tests for which a test file is automatically set up
 
     def setUp(self):
-        self.f = open(TESTFN, 'wb')
+        self.f = open(TESTFN, 'org.eclipse.wb')
 
     def tearDown(self):
         if self.f:
@@ -163,7 +163,7 @@ class AutoFileTests(unittest.TestCase):
         # Remark: Do not perform more than one test per open file,
         # since that does NOT catch the readline error on Windows.
         data = 'xxx'
-        for mode in ['w', 'wb', 'a', 'ab']:
+        for mode in ['w', 'org.eclipse.wb', 'a', 'ab']:
             for attr in ['read', 'readline', 'readlines']:
                 self.f = open(TESTFN, mode)
                 self.f.write(data)
@@ -299,7 +299,7 @@ class OtherFileTests(unittest.TestCase):
         def bug801631():
             # SF bug <http://www.python.org/sf/801631>
             # "file.truncate fault on windows"
-            self.f = f = open(TESTFN, 'wb')
+            self.f = f = open(TESTFN, 'org.eclipse.wb')
             f.write('12345678901')   # 11 bytes
             f.close()
 

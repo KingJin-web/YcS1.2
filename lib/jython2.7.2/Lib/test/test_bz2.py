@@ -56,7 +56,7 @@ class BZ2FileTest(BaseTest):
             os.unlink(self.filename)
 
     def createTempFile(self, crlf=0):
-        with open(self.filename, "wb") as f:
+        with open(self.filename, "org.eclipse.wb") as f:
             if crlf:
                 data = self.DATA_CRLF
             else:
@@ -266,7 +266,7 @@ class BZ2FileTest(BaseTest):
     def testBug1191043(self):
         # readlines() for files containing no newline
         data = 'BZh91AY&SY\xd9b\x89]\x00\x00\x00\x03\x80\x04\x00\x02\x00\x0c\x00 \x00!\x9ah3M\x13<]\xc9\x14\xe1BCe\x8a%t'
-        with open(self.filename, "wb") as f:
+        with open(self.filename, "org.eclipse.wb") as f:
             f.write(data)
         with BZ2File(self.filename) as bz2f:
             lines = bz2f.readlines()
@@ -278,7 +278,7 @@ class BZ2FileTest(BaseTest):
     def testContextProtocol(self):
         # BZ2File supports the context management protocol
         f = None
-        with BZ2File(self.filename, "wb") as f:
+        with BZ2File(self.filename, "org.eclipse.wb") as f:
             f.write(b"xxx")
         f = BZ2File(self.filename, "rb")
         f.close()
@@ -290,7 +290,7 @@ class BZ2FileTest(BaseTest):
         else:
             self.fail("__enter__ on a closed file didn't raise an exception")
         try:
-            with BZ2File(self.filename, "wb") as f:
+            with BZ2File(self.filename, "org.eclipse.wb") as f:
                 1 // 0
         except ZeroDivisionError:
             pass
@@ -302,7 +302,7 @@ class BZ2FileTest(BaseTest):
         # Using a BZ2File from several threads doesn't deadlock (issue #7205).
         data = "1" * 2**20
         nthreads = 10
-        with bz2.BZ2File(self.filename, 'wb') as f:
+        with bz2.BZ2File(self.filename, 'org.eclipse.wb') as f:
             def comp():
                 for i in range(5):
                     f.write(data)
@@ -314,7 +314,7 @@ class BZ2FileTest(BaseTest):
 
     def testMixedIterationReads(self):
         # Issue #8397: mixed iteration and reads should be forbidden.
-        with bz2.BZ2File(self.filename, 'wb') as f:
+        with bz2.BZ2File(self.filename, 'org.eclipse.wb') as f:
             # The internal buffer size is hard-wired to 8192 bytes, we must
             # write out more than that for the test to stop half through
             # the buffer.
@@ -333,7 +333,7 @@ class BZ2FileTest(BaseTest):
         # file for the second time.
         self.createTempFile()
         # Test close():
-        with BZ2File(self.filename, "wb") as f:
+        with BZ2File(self.filename, "org.eclipse.wb") as f:
             self.assertRaises(IOError, f.__init__, "non-existent-file")
         # Test object deallocation without call to close():
         f = bz2.BZ2File(self.filename)

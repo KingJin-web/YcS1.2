@@ -115,7 +115,7 @@ class UUFileTest(unittest.TestCase):
         fin = fout = None
         try:
             test_support.unlink(self.tmpin)
-            fin = open(self.tmpin, 'wb')
+            fin = open(self.tmpin, 'org.eclipse.wb')
             fin.write(plaintext)
             fin.close()
 

@@ -64,7 +64,7 @@ def encode(in_file, out_file, name=None, mode=None):
         if out_file == '-':
             out_file = sys.stdout
         elif isinstance(out_file, basestring):
-            out_file = open(out_file, 'wb')
+            out_file = open(out_file, 'org.eclipse.wb')
             opened_files.append(out_file)
         #
         # Set defaults for name and mode
@@ -127,7 +127,7 @@ def decode(in_file, out_file=None, mode=None, quiet=0):
         if out_file == '-':
             out_file = sys.stdout
         elif isinstance(out_file, basestring):
-            fp = open(out_file, 'wb')
+            fp = open(out_file, 'org.eclipse.wb')
             try:
                 os.path.chmod(out_file, mode)
             except AttributeError:

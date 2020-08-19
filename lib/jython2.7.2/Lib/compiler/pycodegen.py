@@ -48,7 +48,7 @@ def compileFile(filename, display=0):
     except SyntaxError:
         raise
     else:
-        f = open(filename + "c", "wb")
+        f = open(filename + "c", "org.eclipse.wb")
         mod.dump(f)
         f.close()
 

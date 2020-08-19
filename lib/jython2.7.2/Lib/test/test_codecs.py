@@ -474,7 +474,7 @@ class UTF16Test(ReadTest):
 
         s = s1.encode(self.encoding)
         self.addCleanup(test_support.unlink, test_support.TESTFN)
-        with open(test_support.TESTFN, 'wb') as fp:
+        with open(test_support.TESTFN, 'org.eclipse.wb') as fp:
             fp.write(s)
         with codecs.open(test_support.TESTFN, 'U', encoding=self.encoding) as reader:
             self.assertEqual(reader.read(), s1)

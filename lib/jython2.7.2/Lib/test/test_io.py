@@ -332,7 +332,7 @@ class IOTest(unittest.TestCase):
 
     def test_invalid_operations(self):
         # Try writing on a file opened in read mode and vice-versa.
-        for mode in ("w", "wb"):
+        for mode in ("w", "org.eclipse.wb"):
             with self.open(support.TESTFN, mode) as fp:
                 self.assertRaises(IOError, fp.read)
                 self.assertRaises(IOError, fp.readline)
@@ -344,7 +344,7 @@ class IOTest(unittest.TestCase):
             self.assertRaises(IOError, fp.writelines, ["blah\n"])
 
     def test_raw_file_io(self):
-        with self.open(support.TESTFN, "wb", buffering=0) as f:
+        with self.open(support.TESTFN, "org.eclipse.wb", buffering=0) as f:
             self.assertEqual(f.readable(), False)
             self.assertEqual(f.writable(), True)
             self.assertEqual(f.seekable(), True)
@@ -356,7 +356,7 @@ class IOTest(unittest.TestCase):
             self.read_ops(f)
 
     def test_buffered_file_io(self):
-        with self.open(support.TESTFN, "wb") as f:
+        with self.open(support.TESTFN, "org.eclipse.wb") as f:
             self.assertEqual(f.readable(), False)
             self.assertEqual(f.writable(), True)
             self.assertEqual(f.seekable(), True)
@@ -368,7 +368,7 @@ class IOTest(unittest.TestCase):
             self.read_ops(f, True)
 
     def test_readline(self):
-        with self.open(support.TESTFN, "wb") as f:
+        with self.open(support.TESTFN, "org.eclipse.wb") as f:
             f.write(b"abc\ndef\nxyzzy\nfoo\x00bar\nanother line")
         with self.open(support.TESTFN, "rb") as f:
             self.assertEqual(f.readline(), b"abc\n")
@@ -418,12 +418,12 @@ class IOTest(unittest.TestCase):
     def test_with_open(self):
         for bufsize in (0, 1, 100):
             f = None
-            with self.open(support.TESTFN, "wb", bufsize) as f:
+            with self.open(support.TESTFN, "org.eclipse.wb", bufsize) as f:
                 f.write(b"xxx")
             self.assertEqual(f.closed, True)
             f = None
             try:
-                with self.open(support.TESTFN, "wb", bufsize) as f:
+                with self.open(support.TESTFN, "org.eclipse.wb", bufsize) as f:
                     1 // 0
             except ZeroDivisionError:
                 self.assertEqual(f.closed, True)
@@ -432,7 +432,7 @@ class IOTest(unittest.TestCase):
 
     # issue 5008
     def test_append_mode_tell(self):
-        with self.open(support.TESTFN, "wb") as f:
+        with self.open(support.TESTFN, "org.eclipse.wb") as f:
             f.write(b"xxx")
         with self.open(support.TESTFN, "ab", buffering=0) as f:
             self.assertEqual(f.tell(), 3)
@@ -459,7 +459,7 @@ class IOTest(unittest.TestCase):
             def flush(self):
                 record.append(3)
                 super(MyFileIO, self).flush()
-        f = MyFileIO(support.TESTFN, "wb")
+        f = MyFileIO(support.TESTFN, "org.eclipse.wb")
         f.write(b"xxx")
         del f
         support.gc_collect()
@@ -514,7 +514,7 @@ class IOTest(unittest.TestCase):
         self._check_base_destructor(self.TextIOBase)
 
     def test_close_flushes(self):
-        with self.open(support.TESTFN, "wb") as f:
+        with self.open(support.TESTFN, "org.eclipse.wb") as f:
             f.write(b"xxx")
         with self.open(support.TESTFN, "rb") as f:
             self.assertEqual(f.read(), b"xxx")
@@ -522,9 +522,9 @@ class IOTest(unittest.TestCase):
     def test_array_writes(self):
         a = array.array(b'i', range(10))
         n = len(a.tostring())
-        with self.open(support.TESTFN, "wb", 0) as f:
+        with self.open(support.TESTFN, "org.eclipse.wb", 0) as f:
             self.assertEqual(f.write(a), n)
-        with self.open(support.TESTFN, "wb") as f:
+        with self.open(support.TESTFN, "org.eclipse.wb") as f:
             self.assertEqual(f.write(a), n)
 
     def test_closefd(self):
@@ -546,7 +546,7 @@ class IOTest(unittest.TestCase):
         self.assertRaises(ValueError, self.open, support.TESTFN, "r", closefd=False)
 
     def test_closefd_attr(self):
-        with self.open(support.TESTFN, "wb") as f:
+        with self.open(support.TESTFN, "org.eclipse.wb") as f:
             f.write(b"egg\n")
         with self.open(support.TESTFN, "r") as f:
             self.assertEqual(f.buffer.raw.closefd, True)
@@ -557,7 +557,7 @@ class IOTest(unittest.TestCase):
     def test_garbage_collection(self):
         # FileIO objects are collected, and collecting them flushes
         # all data to disk.
-        f = self.FileIO(support.TESTFN, "wb")
+        f = self.FileIO(support.TESTFN, "org.eclipse.wb")
         f.write(b"abcxxx")
         f.f = f
         wr = weakref.ref(f)
@@ -584,7 +584,7 @@ class IOTest(unittest.TestCase):
             self.assertRaises(OverflowError, f.read)
 
     def test_flush_error_on_close(self):
-        f = self.open(support.TESTFN, "wb", buffering=0)
+        f = self.open(support.TESTFN, "org.eclipse.wb", buffering=0)
         def bad_flush():
             raise IOError()
         f.flush = bad_flush
@@ -592,7 +592,7 @@ class IOTest(unittest.TestCase):
         self.assertTrue(f.closed)
 
     def test_multi_close(self):
-        f = self.open(support.TESTFN, "wb", buffering=0)
+        f = self.open(support.TESTFN, "org.eclipse.wb", buffering=0)
         f.close()
         f.close()
         f.close()
@@ -930,7 +930,7 @@ class BufferedReaderTest(unittest.TestCase, CommonBufferedTests):
             l = list(range(256)) * N
             random.shuffle(l)
             s = bytes(bytearray(l))
-            with self.open(support.TESTFN, "wb") as f:
+            with self.open(support.TESTFN, "org.eclipse.wb") as f:
                 f.write(s)
             with self.open(support.TESTFN, self.read_mode, buffering=0) as raw:
                 bufio = self.tp(raw, 8)
@@ -1049,7 +1049,7 @@ class PyBufferedReaderTest(BufferedReaderTest):
 
 
 class BufferedWriterTest(unittest.TestCase, CommonBufferedTests):
-    write_mode = "wb"
+    write_mode = "org.eclipse.wb"
 
     def test_constructor(self):
         rawio = self.MockRawIO()
@@ -1476,7 +1476,7 @@ class PyBufferedRWPairTest(BufferedRWPairTest):
 
 class BufferedRandomTest(BufferedReaderTest, BufferedWriterTest):
     read_mode = "rb+"
-    write_mode = "wb+"
+    write_mode = "org.eclipse.wb+"
 
     def test_constructor(self):
         BufferedReaderTest.test_constructor(self)
@@ -2195,7 +2195,7 @@ class TextIOWrapperTest(unittest.TestCase):
         u_suffix = "\u8888\n"
         suffix = bytes(u_suffix.encode("utf-8"))
         line = prefix + suffix
-        f = self.open(support.TESTFN, "wb")
+        f = self.open(support.TESTFN, "org.eclipse.wb")
         f.write(line*2)
         f.close()
         f = self.open(support.TESTFN, "r", encoding="utf-8")
@@ -2208,7 +2208,7 @@ class TextIOWrapperTest(unittest.TestCase):
     def test_seeking_too(self):
         # Regression test for a specific bug
         data = b'\xe0\xbf\xbf\n'
-        f = self.open(support.TESTFN, "wb")
+        f = self.open(support.TESTFN, "org.eclipse.wb")
         f.write(data)
         f.close()
         f = self.open(support.TESTFN, "r", encoding="utf-8")
@@ -2226,7 +2226,7 @@ class TextIOWrapperTest(unittest.TestCase):
         def test_seek_and_tell_with_data(data, min_pos=0):
             """Tell/seek to various points within a data stream and ensure
             that the decoded data returned by read() is consistent."""
-            f = self.open(support.TESTFN, 'wb')
+            f = self.open(support.TESTFN, 'org.eclipse.wb')
             f.write(data)
             f.close()
             f = self.open(support.TESTFN, encoding='test_decoder')
@@ -2537,7 +2537,7 @@ class CTextIOWrapperTest(TextIOWrapperTest):
         # C TextIOWrapper objects are collected, and collecting them flushes
         # all data to disk.
         # The Python version has __del__, so it ends in gc.garbage instead.
-        rawio = io.FileIO(support.TESTFN, "wb")
+        rawio = io.FileIO(support.TESTFN, "org.eclipse.wb")
         b = self.BufferedWriter(rawio)
         t = self.TextIOWrapper(b, encoding="ascii")
         t.write("456def")
@@ -2705,8 +2705,8 @@ class MiscIOTest(unittest.TestCase):
                 self.assertTrue(issubclass(obj, self.IOBase))
 
     def test_attributes(self):
-        f = self.open(support.TESTFN, "wb", buffering=0)
-        self.assertEqual(f.mode, "wb")
+        f = self.open(support.TESTFN, "org.eclipse.wb", buffering=0)
+        self.assertEqual(f.mode, "org.eclipse.wb")
         f.close()
 
         f = self.open(support.TESTFN, "U")
@@ -2723,9 +2723,9 @@ class MiscIOTest(unittest.TestCase):
         self.assertEqual(f.buffer.mode,     "rb+") # Does it really matter?
         self.assertEqual(f.buffer.raw.mode, "rb+")
 
-        g = self.open(f.fileno(), "wb", closefd=False)
-        self.assertEqual(g.mode,     "wb")
-        self.assertEqual(g.raw.mode, "wb")
+        g = self.open(f.fileno(), "org.eclipse.wb", closefd=False)
+        self.assertEqual(g.mode,     "org.eclipse.wb")
+        self.assertEqual(g.raw.mode, "org.eclipse.wb")
         self.assertEqual(g.name,     f.fileno())
         self.assertEqual(g.raw.name, f.fileno())
         g.close()   # Jython difference: close g first (which may flush) ...
@@ -2734,10 +2734,10 @@ class MiscIOTest(unittest.TestCase):
     def test_io_after_close(self):
         for kwargs in [
                 {"mode": "w"},
-                {"mode": "wb"},
+                {"mode": "org.eclipse.wb"},
                 {"mode": "w", "buffering": 1},
                 {"mode": "w", "buffering": 2},
-                {"mode": "wb", "buffering": 0},
+                {"mode": "org.eclipse.wb", "buffering": 0},
                 {"mode": "r"},
                 {"mode": "rb"},
                 {"mode": "r", "buffering": 1},
@@ -2802,12 +2802,12 @@ class MiscIOTest(unittest.TestCase):
         self.assertIsInstance(self.TextIOBase, abc.ABCMeta)
 
     def _check_abc_inheritance(self, abcmodule):
-        with self.open(support.TESTFN, "wb", buffering=0) as f:
+        with self.open(support.TESTFN, "org.eclipse.wb", buffering=0) as f:
             self.assertIsInstance(f, abcmodule.IOBase)
             self.assertIsInstance(f, abcmodule.RawIOBase)
             self.assertNotIsInstance(f, abcmodule.BufferedIOBase)
             self.assertNotIsInstance(f, abcmodule.TextIOBase)
-        with self.open(support.TESTFN, "wb") as f:
+        with self.open(support.TESTFN, "org.eclipse.wb") as f:
             self.assertIsInstance(f, abcmodule.IOBase)
             self.assertNotIsInstance(f, abcmodule.RawIOBase)
             self.assertIsInstance(f, abcmodule.BufferedIOBase)
@@ -2853,7 +2853,7 @@ class MiscIOTest(unittest.TestCase):
         # buffer size less than or equal to _PIPE_BUF (4096 on Linux)
         # then we will never get a partial write of the buffer.
         rf = self.open(r, mode='rb', closefd=True, buffering=bufsize)
-        wf = self.open(w, mode='wb', closefd=True, buffering=bufsize)
+        wf = self.open(w, mode='org.eclipse.wb', closefd=True, buffering=bufsize)
 
         with rf, wf:
             for N in 9999, 73, 7574:
@@ -2960,10 +2960,10 @@ class SignalsTest(unittest.TestCase):
                     raise
 
     def test_interrupted_write_unbuffered(self):
-        self.check_interrupted_write(b"xy", b"xy", mode="wb", buffering=0)
+        self.check_interrupted_write(b"xy", b"xy", mode="org.eclipse.wb", buffering=0)
 
     def test_interrupted_write_buffered(self):
-        self.check_interrupted_write(b"xy", b"xy", mode="wb")
+        self.check_interrupted_write(b"xy", b"xy", mode="org.eclipse.wb")
 
     def test_interrupted_write_text(self):
         self.check_interrupted_write("xy", b"xy", mode="w", encoding="ascii")
@@ -2995,7 +2995,7 @@ class SignalsTest(unittest.TestCase):
             os.close(r)
 
     def test_reentrant_write_buffered(self):
-        self.check_reentrant_write(b"xy", mode="wb")
+        self.check_reentrant_write(b"xy", mode="org.eclipse.wb")
 
     def test_reentrant_write_text(self):
         self.check_reentrant_write("xy", mode="w", encoding="ascii")
@@ -3087,7 +3087,7 @@ class SignalsTest(unittest.TestCase):
                     raise
 
     def test_interrupterd_write_retry_buffered(self):
-        self.check_interrupted_write_retry(b"x", mode="wb")
+        self.check_interrupted_write_retry(b"x", mode="org.eclipse.wb")
 
     def test_interrupterd_write_retry_text(self):
         self.check_interrupted_write_retry("x", mode="w", encoding="latin1")

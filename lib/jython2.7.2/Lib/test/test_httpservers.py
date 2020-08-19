@@ -290,7 +290,7 @@ class SimpleHTTPServerTestCase(BaseTestCase):
         self.data = 'We are the knights who say Ni!'
         self.tempdir = tempfile.mkdtemp(dir=basetempdir)
         self.tempdir_name = os.path.basename(self.tempdir)
-        temp = open(os.path.join(self.tempdir, 'test'), 'wb')
+        temp = open(os.path.join(self.tempdir, 'test'), 'org.eclipse.wb')
         temp.write(self.data)
         temp.close()
 

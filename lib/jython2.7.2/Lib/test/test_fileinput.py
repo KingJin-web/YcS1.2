@@ -190,7 +190,7 @@ class FileInputTests(unittest.TestCase):
             pass
         try:
             # try opening in universal newline mode
-            t1 = writeTmp(1, ["A\nB\r\nC\rD"], mode="wb")
+            t1 = writeTmp(1, ["A\nB\r\nC\rD"], mode="org.eclipse.wb")
             fi = FileInput(files=t1, mode="U")
             lines = list(fi)
             self.assertEqual(lines, ["A\n", "B\n", "C\n", "D"])
@@ -211,7 +211,7 @@ class FileInputTests(unittest.TestCase):
         except ValueError:
             pass
         try:
-            t1 = writeTmp(1, ["A\nB"], mode="wb")
+            t1 = writeTmp(1, ["A\nB"], mode="org.eclipse.wb")
             fi = FileInput(files=t1, openhook=hook_encoded("rot13"))
             lines = list(fi)
             self.assertEqual(lines, ["N\n", "O"])

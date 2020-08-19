@@ -119,7 +119,7 @@ class MmapTests(unittest.TestCase):
     def test_access_parameter(self):
         # Test for "access" keyword parameter
         mapsize = 10
-        open(TESTFN, "wb").write("a"*mapsize)
+        open(TESTFN, "org.eclipse.wb").write("a"*mapsize)
         f = open(TESTFN, "rb")
         m = mmap.mmap(f.fileno(), mapsize, access=mmap.ACCESS_READ)
         self.assertEqual(m[:], 'a'*mapsize, "Readonly memory map data incorrect.")
@@ -342,7 +342,7 @@ class MmapTests(unittest.TestCase):
             self.skipTest("needs os.stat")
         # NOTE: allocation granularity is currently 65536 under Win64,
         # and therefore the minimum offset alignment.
-        with open(TESTFN, "wb") as f:
+        with open(TESTFN, "org.eclipse.wb") as f:
             f.write((65536 * 2) * b'm') # Arbitrary character
 
         with open(TESTFN, "rb") as f:
@@ -358,7 +358,7 @@ class MmapTests(unittest.TestCase):
         if not hasattr(os, "stat"):
             self.skipTest("needs os.stat")
 
-        with open(TESTFN, "wb") as f:
+        with open(TESTFN, "org.eclipse.wb") as f:
             f.write(115699 * b'm') # Arbitrary character
 
         with open(TESTFN, "w+b") as f:
@@ -546,7 +546,7 @@ class MmapTests(unittest.TestCase):
         if not hasattr(mmap, 'PROT_READ'):
             return
         mapsize = 10
-        open(TESTFN, "wb").write("a"*mapsize)
+        open(TESTFN, "org.eclipse.wb").write("a"*mapsize)
         f = open(TESTFN, "rb")
         m = mmap.mmap(f.fileno(), mapsize, prot=mmap.PROT_READ)
         self.assertRaises(TypeError, m.write, "foo")
@@ -558,7 +558,7 @@ class MmapTests(unittest.TestCase):
 
     def test_io_methods(self):
         data = "0123456789"
-        open(TESTFN, "wb").write("x"*len(data))
+        open(TESTFN, "org.eclipse.wb").write("x"*len(data))
         f = open(TESTFN, "r+b")
         m = mmap.mmap(f.fileno(), len(data))
         f.close()
@@ -624,7 +624,7 @@ class MmapTests(unittest.TestCase):
             m.close()
 
             # Should not crash (Issue 5385)
-            open(TESTFN, "wb").write("x"*10)
+            open(TESTFN, "org.eclipse.wb").write("x"*10)
             f = open(TESTFN, "r+b")
             m = mmap.mmap(f.fileno(), 0)
             f.close()

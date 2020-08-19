@@ -92,7 +92,7 @@ class PosixPathTest(unittest.TestCase):
 
     def test_islink(self):
         self.assertIs(posixpath.islink(test_support.TESTFN + "1"), False)
-        f = open(test_support.TESTFN + "1", "wb")
+        f = open(test_support.TESTFN + "1", "org.eclipse.wb")
         try:
             f.write("foo")
             f.close()
@@ -109,7 +109,7 @@ class PosixPathTest(unittest.TestCase):
                 f.close()
 
     def test_samefile(self):
-        f = open(test_support.TESTFN + "1", "wb")
+        f = open(test_support.TESTFN + "1", "org.eclipse.wb")
         try:
             f.write("foo")
             f.close()
@@ -137,7 +137,7 @@ class PosixPathTest(unittest.TestCase):
                     True
                 )
                 os.remove(test_support.TESTFN + "2")
-                f = open(test_support.TESTFN + "2", "wb")
+                f = open(test_support.TESTFN + "2", "org.eclipse.wb")
                 f.write("bar")
                 f.close()
                 self.assertIs(
@@ -152,7 +152,7 @@ class PosixPathTest(unittest.TestCase):
                 f.close()
 
     def test_samestat(self):
-        f = open(test_support.TESTFN + "1", "wb")
+        f = open(test_support.TESTFN + "1", "org.eclipse.wb")
         try:
             f.write("foo")
             f.close()
@@ -176,7 +176,7 @@ class PosixPathTest(unittest.TestCase):
                     True
                 )
                 os.remove(test_support.TESTFN + "2")
-                f = open(test_support.TESTFN + "2", "wb")
+                f = open(test_support.TESTFN + "2", "org.eclipse.wb")
                 f.write("bar")
                 f.close()
                 self.assertIs(

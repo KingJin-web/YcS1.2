@@ -64,11 +64,11 @@ class GettextBaseTest(unittest.TestCase):
     def setUp(self):
         if not os.path.isdir(LOCALEDIR):
             os.makedirs(LOCALEDIR)
-        with open(MOFILE, 'wb') as fp:
+        with open(MOFILE, 'org.eclipse.wb') as fp:
             fp.write(base64.decodestring(GNU_MO_DATA))
-        with open(UMOFILE, 'wb') as fp:
+        with open(UMOFILE, 'org.eclipse.wb') as fp:
             fp.write(base64.decodestring(UMO_DATA))
-        with open(MMOFILE, 'wb') as fp:
+        with open(MMOFILE, 'org.eclipse.wb') as fp:
             fp.write(base64.decodestring(MMO_DATA))
 
         self.env = test_support.EnvironmentVarGuard()

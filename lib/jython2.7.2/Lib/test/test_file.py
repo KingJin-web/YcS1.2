@@ -12,7 +12,7 @@ class AutoFileTests(unittest.TestCase):
     # file tests for which a test file is automatically set up
 
     def setUp(self):
-        self.f = open(TESTFN, 'wb')
+        self.f = open(TESTFN, 'org.eclipse.wb')
 
     def tearDown(self):
         if self.f:
@@ -200,7 +200,7 @@ class OtherFileTests(unittest.TestCase):
         def bug801631():
             # SF bug <http://www.python.org/sf/801631>
             # "file.truncate fault on windows"
-            f = open(TESTFN, 'wb')
+            f = open(TESTFN, 'org.eclipse.wb')
             f.write('12345678901')   # 11 bytes
             f.close()
 

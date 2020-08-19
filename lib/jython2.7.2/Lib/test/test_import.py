@@ -494,7 +494,7 @@ func_filename = func.func_code.co_filename
                           code.co_names, code.co_varnames, code.co_filename,
                           code.co_name, code.co_firstlineno, code.co_lnotab,
                           code.co_freevars, code.co_cellvars)
-        with open(self.compiled_name, "wb") as f:
+        with open(self.compiled_name, "org.eclipse.wb") as f:
             f.write(header)
             marshal.dump(code, f)
         mod = self.import_module()

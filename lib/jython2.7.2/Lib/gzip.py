@@ -60,10 +60,10 @@ class GzipFile(io.BufferedIOBase):
         fileobj, if discernible; otherwise, it defaults to the empty string,
         and in this case the original filename is not included in the header.
 
-        The mode argument can be any of 'r', 'rb', 'a', 'ab', 'w', or 'wb',
+        The mode argument can be any of 'r', 'rb', 'a', 'ab', 'w', or 'org.eclipse.wb',
         depending on whether the file will be read or written.  The default
         is the mode of fileobj if discernible; otherwise, the default is 'rb'.
-        Be aware that only the 'rb', 'ab', and 'wb' values should be used
+        Be aware that only the 'rb', 'ab', and 'org.eclipse.wb' values should be used
         for cross-platform portability.
 
         The compresslevel argument is an integer from 0 to 9 controlling the
@@ -514,14 +514,14 @@ def _test():
                     print "filename doesn't end in .gz:", repr(arg)
                     continue
                 f = open(arg, "rb")
-                g = __builtin__.open(arg[:-3], "wb")
+                g = __builtin__.open(arg[:-3], "org.eclipse.wb")
         else:
             if arg == "-":
                 f = sys.stdin
-                g = GzipFile(filename="", mode="wb", fileobj=sys.stdout)
+                g = GzipFile(filename="", mode="org.eclipse.wb", fileobj=sys.stdout)
             else:
                 f = __builtin__.open(arg, "rb")
-                g = open(arg + ".gz", "wb")
+                g = open(arg + ".gz", "org.eclipse.wb")
         while True:
             chunk = f.read(1024)
             if not chunk:

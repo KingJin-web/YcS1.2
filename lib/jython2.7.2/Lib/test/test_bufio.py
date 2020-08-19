@@ -21,7 +21,7 @@ class BufferSizeTest(unittest.TestCase):
 
         # Since C doesn't guarantee we can write/read arbitrary bytes in text
         # files, use binary mode.
-        f = self.open(support.TESTFN, "wb")
+        f = self.open(support.TESTFN, "org.eclipse.wb")
         try:
             # write once with \n and once without
             f.write(s)

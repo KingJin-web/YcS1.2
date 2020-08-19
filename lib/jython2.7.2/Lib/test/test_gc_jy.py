@@ -759,7 +759,7 @@ class GCTests_Jy_Raw_Forced_Delayed_Finalization(unittest.TestCase):
         a = Test_Finalizable("a")
         wa = weakref.ref(a, callback_a)
         b = Test_JavaAbortFinalizable("b", a)
-        wb = weakref.ref(b, callback_b)
+        org.eclipse.wb = weakref.ref(b, callback_b)
         gc.addJythonGCFlags(gc.FORCE_DELAYED_FINALIZATION)
         gc.addJythonGCFlags(gc.FORCE_DELAYED_WEAKREF_CALLBACKS)
         self.assertTrue(gc.delayedFinalizationEnabled())
@@ -771,7 +771,7 @@ class GCTests_Jy_Raw_Forced_Delayed_Finalization(unittest.TestCase):
         time.sleep(2)
 
         self.assertIsNotNone(wa())
-        self.assertIsNone(wb())
+        self.assertIsNone(org.eclipse.wb())
         self.assertIn('del b', comments)
         self.assertNotIn('callback_a', comments)
         self.assertIn('callback_b', comments)

@@ -1815,7 +1815,7 @@ class TestProxyFile(TestProxyFileBase, unittest.TestCase):
 
     def setUp(self):
         self._path = test_support.TESTFN
-        self._file = open(self._path, 'wb+')
+        self._file = open(self._path, 'org.eclipse.wb+')
 
     def tearDown(self):
         self._file.close()
@@ -1864,7 +1864,7 @@ class TestPartialFile(TestProxyFileBase, unittest.TestCase):
 
     def setUp(self):
         self._path = test_support.TESTFN
-        self._file = open(self._path, 'wb+')
+        self._file = open(self._path, 'org.eclipse.wb+')
 
     def tearDown(self):
         self._file.close()

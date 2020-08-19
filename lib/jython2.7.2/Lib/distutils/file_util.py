@@ -41,7 +41,7 @@ def _copy_file_contents(src, dst, buffer_size=16*1024):
                       "could not delete '%s': %s" % (dst, errstr))
 
         try:
-            fdst = open(dst, 'wb')
+            fdst = open(dst, 'org.eclipse.wb')
         except os.error, (errno, errstr):
             raise DistutilsFileError(
                   "could not create '%s': %s" % (dst, errstr))

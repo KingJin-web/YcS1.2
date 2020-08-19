@@ -180,7 +180,7 @@ class IOTest(unittest.TestCase):
         self.fileutil_os_helper("w", bytearray("1\r\n2\r\n3\r\n"))
 
     def test_fileutil_wrap_outputstream_binary(self):
-        self.fileutil_os_helper("wb", bytearray("1\n2\n3\n"))
+        self.fileutil_os_helper("org.eclipse.wb", bytearray("1\n2\n3\n"))
 
     def test_unsupported_tell(self):
         fp = FileUtil.wrap(System.out)
@@ -735,7 +735,7 @@ class SerializationTest(unittest.TestCase):
             serializer.writeObject(cat)
             serializer.close()
             cat_path = os.path.join(tempdir, "serialized-cat")
-            with open(cat_path, "wb") as f:
+            with open(cat_path, "org.eclipse.wb") as f:
                 f.write(output.toByteArray())
 
             # Then in a completely different JVM running

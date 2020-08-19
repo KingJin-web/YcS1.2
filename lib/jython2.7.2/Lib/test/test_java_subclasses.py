@@ -275,7 +275,7 @@ class AbstractOnSyspathTest(unittest.TestCase):
     Checks for http://jython.org/bugs/1861985
     '''
     def setUp(self):
-        out = open('Abstract.class', 'wb')
+        out = open('Abstract.class', 'org.eclipse.wb')
         out.write(ABSTRACT_CLASS)
         out.close()
         self.orig_syspath = sys.path[:]

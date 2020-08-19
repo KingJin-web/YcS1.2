@@ -1423,8 +1423,8 @@ class TestFileTypeRepr(TestCase):
         self.assertEqual("FileType('r')", repr(type))
 
     def test_wb_1(self):
-        type = argparse.FileType('wb', 1)
-        self.assertEqual("FileType('wb', 1)", repr(type))
+        type = argparse.FileType('org.eclipse.wb', 1)
+        self.assertEqual("FileType('org.eclipse.wb', 1)", repr(type))
 
 
 class RFile(object):
@@ -1555,8 +1555,8 @@ class TestFileTypeW(TempDirMixin, ParserTestCase):
 class TestFileTypeWB(TempDirMixin, ParserTestCase):
 
     argument_signatures = [
-        Sig('-x', type=argparse.FileType('wb')),
-        Sig('spam', type=argparse.FileType('wb')),
+        Sig('-x', type=argparse.FileType('org.eclipse.wb')),
+        Sig('spam', type=argparse.FileType('org.eclipse.wb')),
     ]
     failures = ['-x', '-x bar']
     successes = [
