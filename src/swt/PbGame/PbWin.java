@@ -75,28 +75,26 @@ public class PbWin {
 //				cells[y][x] = label;
 //			}
 //		}
+
         compMap.addKeyListener(new KeyListener() {
 
             @Override
             public void keyPressed(KeyEvent arg0) {
-                if (arg0.keyCode==16777217) {
+                if (arg0.keyCode == 16777217) {
                     pGame.moveTop();
-                }else if (arg0.keyCode==16777218) {
+                } else if (arg0.keyCode == 16777218) {
                     pGame.moveDown();
-                }else if (arg0.keyCode==16777219) {
+                } else if (arg0.keyCode == 16777219) {
                     pGame.moveLeft();
-                }else if (arg0.keyCode==16777220) {
+                } else if (arg0.keyCode == 16777220) {
                     pGame.moveRight();
                 }
-                // TODO Auto-generated method stub
+
                 refresh();
             }
 
             @Override
-            public void keyReleased(KeyEvent arg0) {
-                // TODO Auto-generated method stub
-
-            }
+            public void keyReleased(KeyEvent arg0) { }
 
         });
 
@@ -130,11 +128,12 @@ public class PbWin {
         refresh();
 
     }
+
     public void refresh() {
         for (int y = 0; y < cells.length; y++) {
             for (int x = 0; x < cells[y].length; x++) {
                 char c = pGame.getMap()[y][x];
-                System.out.println(c);
+
                 String path = "imgs/" + c + ".GIF";
                 //String path = "imgs/5.GIF";
                 //label.setImage(SWTResourceManager.getImage(PbWin.class, "imgs/5.GIF"));
